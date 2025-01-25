@@ -31,9 +31,9 @@ async function loadinitPkmks(){
 
 
 function PkmIdThreeDigits() {
-    let pkmId = initPkms.id.toString();
-    let pkmIdFixed = pkmId.padStart(3, '0');
-    return `${pkmIdFixed}`;
+    let IdPkm = initPkms.id.toString();
+    let IdPkmFixed = IdPkm.padStart(3, '0');
+    return `${IdPkmFixed}`;
 }
 
 
@@ -45,11 +45,13 @@ async function loadPkmsTypes() {
 }
 
 
-function showCurrentPkm(pkmId) {
-    toggleOverlay();
+function toggleOverlayPkmCard(pkmId) {
+    toggleOverlayPkmCard();
+    getCurrentPkmTemplate(pkmId);
 }
 
 
-function toggleOverlay() {
+function toggleOverlayPkmCard() {
     document.getElementById("overlay").classList.toggle("d_none");
+    document.getElementById("currentPkmCard").classList.toggle("d_none");
 }

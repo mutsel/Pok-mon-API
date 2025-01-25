@@ -1,7 +1,72 @@
 #currentPkmCard {
+    width: 600px;
+    top: 12%;
+    bottom: 12%;
     position: fixed;
-    top: 20%;
-    right: 20%;
-    bottom: 20%;
-    left: 20%;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 32px;
+    border-style: solid;
+    border-width: 4px;
+    border-color: rgb(94, 94, 94);
+    background-color: rgb(94, 94, 94);
+    flex-direction: column;
+    flex: 1;
+    box-shadow: 0px 0px 16px 16px rgb(94, 94, 94, 0.5);
+}
+
+
+#currentPkmCardContent {
+    width: 95%;
+    height: 95%;
+    background-color: rgb(207, 193, 193);
+}
+
+
+#currentPkmTitle {
+    height: 64px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: rgb(94, 94, 94);
+}
+
+
+#currentPkmId {
+    width: 20%;
+    font-family: Roboto;
+    font-weight: 500;
+    font-size: 24px;
+}
+
+
+#currentPkmName {
+    margin: 0;
+    padding: 0;
+    font-family: Pokemon;
+    font-size: 32px;
+    font-weight: 400;
+    letter-spacing: 6px;
+    position: relative;
+    top: -24px;
+}
+
+
+#closeCurrentPkm {
+    width: 20%;  
+}
+
+
+#currentPkmBg {
+    width: 100%;
+    height: 344px;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    background-color: rgb(179, 190, 190);
+}
+
+
+#currentPkmImg {
+    padding: 80px 64px 8px 64px;
 }

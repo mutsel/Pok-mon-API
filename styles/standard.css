@@ -16,5 +16,12 @@
 
 
 .d_none {
-    display: none;
+    display: none !important;
+}
+
+
+.display_flex_centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
