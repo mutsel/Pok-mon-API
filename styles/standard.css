@@ -2,12 +2,19 @@
     height: 160px;
 }
 
+
 .resp_padding {
     padding-left: 80px;
     padding-right: 80px;
 }
 
+
 .position_top {
     position: relative;
     top: -128px;
+}
+
+
+.d_none {
+    display: none;
 }

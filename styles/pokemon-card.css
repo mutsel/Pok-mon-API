@@ -43,7 +43,7 @@
 
 
 .pkm_card_img {
-    height: 160px;
+    min-height: 160px;
     width: 120%;
     object-fit: contain;
     object-position: center;

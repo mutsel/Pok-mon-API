@@ -9,22 +9,22 @@
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./styles/standard.css">
     <link rel="stylesheet" href="./styles/pokemon-card.css">
+    <link rel="stylesheet" href="./styles/current-pokemon.css">
 
     <script src="./script.js"></script>
     <script src="./templates.js"></script>
 </head>
 
 <body onload="init()">
-    <header class="resp_height resp_padding">
-    </header>
+    <header class="resp_height resp_padding"></header>
 
-    <main id="pokedex" class="resp_padding">
-
+    <main class="resp_padding">
+        <section id="pokedex"></section>
+        <section onclick="toggleOverlay()" id="overlay" class="d_none"></section>
+        <section id="currentPkmCard"></section>
     </main>
 
-    <footer class="resp_height resp_padding">
-
-    </footer>
+    <footer class="resp_height resp_padding"></footer>
 </body>
 
 </html>

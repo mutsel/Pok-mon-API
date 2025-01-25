@@ -19,14 +19,21 @@ async function loadinitPkmsUrls() {
 
 
 async function loadinitPkmks(){
-    for (let indexinitPkms = 0; indexinitPkms < 9; indexinitPkms++) {
+    for (let indexinitPkms = 0; indexinitPkms < 20; indexinitPkms++) {
         let PKM_URL = initPkmsUrls.results[indexinitPkms].url;
         let pkmDataApi = await fetch(PKM_URL);
         initPkms = await pkmDataApi.json();
-        console.log(initPkms);
+        //console.log(initPkms);
         document.getElementById("pokedex").innerHTML += getPkmCardTemplate();
         loadPkmsTypes(indexinitPkms);
     } 
+}
+
+
+function PkmIdThreeDigits() {
+    let pkmId = initPkms.id.toString();
+    let pkmIdFixed = pkmId.padStart(3, '0');
+    return `${pkmIdFixed}`;
 }
 
 
@@ -35,4 +42,14 @@ async function loadPkmsTypes() {
         document.getElementById("pkm_card_types_"+ initPkms.id).innerHTML += getPkmTypesTemplate(indexPkmType);
     }
     document.getElementById("pkm_" + initPkms.id).style.backgroundImage = "url('./assets/icons/" + initPkms.types[0].type.name + ".svg')";
+}
+
+
+function showCurrentPkm(pkmId) {
+    toggleOverlay();
+}
+
+
+function toggleOverlay() {
+    document.getElementById("overlay").classList.toggle("d_none");
 }
