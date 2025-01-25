@@ -1,6 +1,6 @@
 function getPkmCardTemplate() {
     return `<div class="pkm_card">
-            <div class="pkm_card_content">
+            <div id="pkm_${initPkms.id}" class="pkm_card_content">
                 <img src="${initPkms.sprites.other.dream_world.front_default}" class="pkm_card_img position_top">
                 <span class="pkm_card_id position_top">#${initPkms.id}</span>
                 <span class="pkm_card_name position_top">${initPkms.name.charAt(0).toUpperCase() + initPkms.name.slice(1)}</span>

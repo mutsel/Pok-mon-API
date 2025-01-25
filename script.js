@@ -19,7 +19,7 @@ async function loadinitPkmsUrls() {
 
 
 async function loadinitPkmks(){
-    for (let indexinitPkms = 0; indexinitPkms < 20; indexinitPkms++) {
+    for (let indexinitPkms = 0; indexinitPkms < 9; indexinitPkms++) {
         let PKM_URL = initPkmsUrls.results[indexinitPkms].url;
         let pkmDataApi = await fetch(PKM_URL);
         initPkms = await pkmDataApi.json();
@@ -30,9 +30,9 @@ async function loadinitPkmks(){
 }
 
 
-function loadPkmsTypes() {
+async function loadPkmsTypes() {
     for (let indexPkmType = 0; indexPkmType < initPkms.types.length; indexPkmType++) {
         document.getElementById("pkm_card_types_"+ initPkms.id).innerHTML += getPkmTypesTemplate(indexPkmType);
     }
-    
+    document.getElementById("pkm_" + initPkms.id).style.backgroundImage = "url('./assets/icons/" + initPkms.types[0].type.name + ".svg')";
 }
