@@ -1,39 +1,39 @@
 #currentPkmCard {
     width: 600px;
-    top: 12%;
-    bottom: 12%;
+    height: 960px;
     position: fixed;
-    padding-left: 20px;
-    padding-right: 20px;
+    top: 10%;
     border-radius: 32px;
     border-style: solid;
-    border-width: 4px;
-    border-color: rgb(94, 94, 94);
-    background-color: rgb(94, 94, 94);
+    border-width: 16px;
+    background-color: rgb(88,169,81);
+    border-color:  rgb(88,169,81);
+    border-color:  rgb(219, 221, 224) !important;
     flex-direction: column;
     flex: 1;
-    box-shadow: 0px 0px 16px 16px rgb(94, 94, 94, 0.5);
+    box-shadow: 0px 0px 16px 8px  rgb(219, 221, 224);
+    color: rgb(50, 50, 50);
 }
 
 
-#currentPkmCardContent {
-    width: 95%;
-    height: 95%;
-    background-color: rgb(207, 193, 193);
+#currentPkmCardOverview {
+    width: 100%;
+    padding-bottom: 12px;
 }
 
 
 #currentPkmTitle {
-    height: 64px;
+    height: 72px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    background-color: rgb(94, 94, 94);
+    background-color:rgb(219, 221, 224, 0.1);
 }
 
 
 #currentPkmId {
-    width: 20%;
+    width: 10%;
+    padding-left: 16px;
     font-family: Roboto;
     font-weight: 500;
     font-size: 24px;
@@ -48,25 +48,149 @@
     font-weight: 400;
     letter-spacing: 6px;
     position: relative;
-    top: -24px;
+    top: -20px;
 }
 
 
 #closeCurrentPkm {
-    width: 20%;  
+    width: 10%;  
+    padding-right: 16px;
+    border: none;
+    background-color: transparent;
+    filter: brightness(150%);
 }
 
 
-#currentPkmBg {
+#closeCurrentPkm:hover {
+    cursor: pointer;
+}
+
+
+#currentPkmFrame {
     width: 100%;
     height: 344px;
     display: flex;
     justify-content: center;
     align-items: end;
-    background-color: rgb(179, 190, 190);
 }
 
 
 #currentPkmImg {
     padding: 80px 64px 8px 64px;
+}
+
+
+.current_pkm_navbar {
+    height: 48px;
+    margin: 8px 24px 0 24px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid rgb(180, 180, 180, 0.5);
+}
+
+
+.current_pkm_navbar button {
+    border: none;
+    background-color: transparent;
+    color: rgb(150, 150, 150);
+    font-family: Roboto;
+    font-size: 22px;
+    font-weight: 550;
+}
+
+
+.current_pkm_navbar button:hover {
+    cursor: pointer;
+    transform: scale(120%);
+    color: rgb(120, 120, 120);
+    text-decoration: underline;
+    text-underline-offset: 9px;
+    text-decoration-thickness: 4px;
+}
+
+
+#currentPkmCardContent {
+   width: 100%;
+   height: 100%; 
+   background-color:rgb(219, 221, 224); 
+   border-top-left-radius: 32px;
+   border-top-right-radius: 32px;
+}
+
+
+.current_pkm_info {
+    max-height: 482px;
+}
+
+
+.section_about {
+    padding: 40px 40px 0 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+
+.info_category {
+    display: flex;
+    flex-direction: row;
+    flex: 0.5;
+    color: rgb(120, 120, 120);
+    font-family: Roboto;
+    font-size: 22px;
+    font-weight: 500;
+}
+
+
+.section_about div {
+    flex: 0.5;
+}
+
+
+.types_icons img {
+    height: 40px;
+    width: 40px;
+    margin: 0 8px 0 8px;
+    padding: 24px;
+    border-width: 4px;
+    border-style: solid;
+    border-radius: 90px;
+    overflow: visible;
+}
+
+
+.section_stats {
+    padding: 64px 40px 0 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+
+.section_stats div {
+    flex: 0.35;
+}
+
+
+.stat_value {
+    width: 100%;
+    flex: 1 !important;
+}
+
+
+.progress_bar {
+    height: 20px;
+    margin-left: 24px;
+    border-radius: 16px;
+    background-color: rgb(180, 180, 180);
+    flex: 1 !important
+}
+
+
+.progress_bar div {
+    width: 45%;
+    height: 100%;
+    border-radius: 16px;
 }

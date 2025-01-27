@@ -65,7 +65,7 @@
     font-size: 22px;
     font-weight: 400;
     letter-spacing: 4px;
-    color: rgb(0, 0, 0);;
+    color: rgb(50, 50, 50);
 }
 
 
@@ -75,7 +75,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    color: rgb(0, 0, 0);
+    color: rgb(50, 50, 50);
     font-size: 18px;
 }
 
@@ -94,7 +94,7 @@
 
 
 .normal {
-    background-color: rgb(168,168,153,0.6);
+    background-color: rgba(168, 168, 153, 0.6);
     border-color:  rgb(168,168,153);
 }
 

@@ -19,20 +19,31 @@
     <header class="resp_height resp_padding"></header>
 
     <main class="resp_padding display_flex_centered">
+
         <section id="pokedex" class="display_flex_centered"></section>
+
         <section onclick="toggleOverlayPkmCard()" id="overlay" class="d_none"></section>
 
         <section id="currentPkmCard" class="display_flex_centered d_none">
-            <div id="currentPkmCardContent">
+            <div id="currentPkmCardOverview">
                 <div id="currentPkmTitle">
                     <span id="currentPkmId" class="display_flex_centered">#000</span>
                     <h2 id="currentPkmName">BULBASAUR</h2>
-                    <button onclick="toggleOverlayPkmCard()" id="closeCurrentPkm" class="display_flex_centered">x</button>
+                    <button onclick="toggleOverlayPkmCard()" id="closeCurrentPkm" class="display_flex_centered"><img src="./assets/icons/close_btn.svg"></button>
                 </div>
-                <div id="currentPkmBg">
+                <div id="currentPkmFrame">
                     <img id="currentPkmImg" src="./assets/1.svg">
                 </div>
-
+            </div>
+            <div id="currentPkmCardContent">
+                <div class="current_pkm_navbar">
+                    <button>About</button>
+                    <button>Stats</button>
+                    <button>Evolution</button>
+                </div>
+                <div class="current_pkm_info">
+                    
+                </div>
             </div>
         </section>
 
