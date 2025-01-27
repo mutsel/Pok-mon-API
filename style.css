@@ -31,9 +31,7 @@ header {
 main {
     padding-top: 80px;
     flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
 }
 
 
@@ -50,6 +48,27 @@ main {
     bottom: 0;
     left: 0;
     background-color: rgb(0, 0, 0, 0.5);
+}
+
+
+#loadMorePkm {
+    width: 100%;
+    margin-bottom: 32px;
+}
+
+
+#loadMorePkm img {
+    width: 50%;
+    max-width: 816px;
+    height: 160px;
+    object-fit: fill;
+}
+
+
+#loadMorePkm img:hover {
+    cursor: pointer;
+    filter: drop-shadow(0 -4px 16px rgba(255,255,255,0.5));
+    transform: scale(108%);
 }
 
 
