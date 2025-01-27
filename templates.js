@@ -24,7 +24,9 @@ function getCurrentPkmCardTemplate(indexinitPkms) {
                     <button onclick="toggleOverlayPkmCard()" id="closeCurrentPkm" class="display_flex_centered"><img src="./assets/icons/close_btn.svg"></button>
                 </div>
                 <div id="currentPkmFrame">
+                    <img class="arrow" onclick="lastPkmCard(${indexinitPkms})" src="./assets/arrow_left.png">
                     <img id="currentPkmImg" src="">
+                    <img class="arrow" onclick="nextPkmCard(${indexinitPkms})" src="./assets/arrow_right.png">
                 </div>
             </div>
             <div id="currentPkmCardContent">
@@ -34,9 +36,7 @@ function getCurrentPkmCardTemplate(indexinitPkms) {
                     <button onclick="loadCurrentPkmInfoCategory('Evolution', ${indexinitPkms})">Evolution</button>
                     <button onclick="loadCurrentPkmInfoCategory('Pokédex', ${indexinitPkms})">Pokédex</button>
                 </div>
-                <div id="currentPkmInfo">
-                    
-                </div>
+                <div id="currentPkmInfo"></div>
             </div>`
 }
 

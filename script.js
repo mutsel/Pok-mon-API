@@ -10,7 +10,7 @@ function init() {
 
 
 async function loadinitPkmsUrls() {
-    for (let indexinitPkms = 1; indexinitPkms < 5; indexinitPkms++) {   
+    for (let indexinitPkms = 1; indexinitPkms < 5; indexinitPkms++) {
         let pokeApi = await fetch(BASE_URL);
         initPkmsUrls = await pokeApi.json();
     }
@@ -18,16 +18,16 @@ async function loadinitPkmsUrls() {
 }
 
 
-async function loadinitPkmks(){
+async function loadinitPkmks() {
     for (let indexinitPkms = 0; indexinitPkms < 20; indexinitPkms++) {
         let PKM_URL = initPkmsUrls.results[indexinitPkms].url;
         let pkmDataApi = await fetch(PKM_URL);
         let initPkmsEntrie = await pkmDataApi.json();
-        initPkms.push (initPkmsEntrie);
+        initPkms.push(initPkmsEntrie);
         //console.log(initPkms);
         document.getElementById("pokedex").innerHTML += getPkmCardTemplate(indexinitPkms);
         loadPkmsTypes(indexinitPkms);
-    } 
+    }
 }
 
 
@@ -40,7 +40,7 @@ function PkmIdThreeDigits(PkmId) {
 
 async function loadPkmsTypes(indexinitPkms) {
     for (let indexPkmType = 0; indexPkmType < initPkms[indexinitPkms].types.length; indexPkmType++) {
-        document.getElementById("pkm_card_types_"+ initPkms[indexinitPkms].id).innerHTML += getPkmTypesNameTemplate(indexinitPkms, indexPkmType);
+        document.getElementById("pkm_card_types_" + initPkms[indexinitPkms].id).innerHTML += getPkmTypesNameTemplate(indexinitPkms, indexPkmType);
     }
 
     let firstType = initPkms[indexinitPkms].types[0].type.name;
@@ -49,29 +49,11 @@ async function loadPkmsTypes(indexinitPkms) {
 
 
 function renderCurrentPkmCard(indexinitPkms) {
-    let contentRef= document.getElementById("currentPkmCard");
-    contentRef.innerHTML = ""; 
+    let contentRef = document.getElementById("currentPkmCard");
+    contentRef.innerHTML = "";
     contentRef.innerHTML += getCurrentPkmCardTemplate(indexinitPkms);
-    loadContentCurrentPkmCard(indexinitPkms);
     toggleOverlayPkmCard();
-}
-
-
-function loadContentCurrentPkmCard(indexinitPkms) {
-    changeBgCurrentPkmCard(indexinitPkms);
-    PkmId = indexinitPkms +1;
-    document.getElementById("currentPkmId").innerHTML = "#" + PkmIdThreeDigits(PkmId);
-    document.getElementById("currentPkmName").innerHTML = initPkms[indexinitPkms].name.charAt(0).toUpperCase() + initPkms[indexinitPkms].name.slice(1);
-    document.getElementById("currentPkmImg").src = initPkms[indexinitPkms].sprites.other.dream_world.front_default;
-    loadCurrentPkmInfoCategory("", indexinitPkms);
-}
-
-
-function changeBgCurrentPkmCard(indexinitPkms) {
-    let firstType = initPkms[indexinitPkms].types[0].type.name;
-    let cssClassFirstType = document.querySelector("."+firstType);
-    let currentBgColor = getComputedStyle(cssClassFirstType).borderColor;
-    document.getElementById("currentPkmCard").style.backgroundColor = currentBgColor;
+    loadContentCurrentPkmCard(indexinitPkms);
 }
 
 
@@ -81,10 +63,28 @@ function toggleOverlayPkmCard() {
 }
 
 
+function loadContentCurrentPkmCard(indexinitPkms) {
+    changeBgCurrentPkmCard(indexinitPkms);
+    PkmId = indexinitPkms + 1;
+    document.getElementById("currentPkmId").innerHTML = "#" + PkmIdThreeDigits(PkmId);
+    document.getElementById("currentPkmName").innerHTML = initPkms[indexinitPkms].name.charAt(0).toUpperCase() + initPkms[indexinitPkms].name.slice(1);
+    document.getElementById("currentPkmImg").src = initPkms[indexinitPkms].sprites.other.dream_world.front_default;
+    loadCurrentPkmInfoCategory("", indexinitPkms);
+}
+
+
+function changeBgCurrentPkmCard(indexinitPkms) {
+    let firstType = initPkms[indexinitPkms].types[0].type.name;
+    let cssClassFirstType = document.querySelector("." + firstType);
+    let currentBgColor = getComputedStyle(cssClassFirstType).borderColor;
+    document.getElementById("currentPkmCard").style.backgroundColor = currentBgColor;
+}
+
+
 function loadCurrentPkmInfoCategory(clickedBtn, indexinitPkms) {
     //console.log(initPkms[indexinitPkms]);
-    let contentRef= document.getElementById("currentPkmInfo");
-    contentRef.innerHTML = ""; 
+    let contentRef = document.getElementById("currentPkmInfo");
+    contentRef.innerHTML = "";
     let currentCategory = clickedBtn;
     switch (currentCategory) {
         default:
@@ -114,9 +114,31 @@ function loadCurrentTypes(indexinitPkms) {
 
 
 function loadCurrentAbilities(indexinitPkms) {
-    let contentRef =  document.getElementById("currentAbilities");
+    let contentRef = document.getElementById("currentAbilities");
     for (let indexPkmAbility = 0; indexPkmAbility < initPkms[indexinitPkms].abilities.length; indexPkmAbility++) {
         contentRef.innerHTML += initPkms[indexinitPkms].abilities[indexPkmAbility].ability.name + ", ";
     }
     contentRef.innerHTML = contentRef.innerHTML.slice(0, -2);
+}
+
+
+function lastPkmCard(indexinitPkms) {
+    if (indexinitPkms > 0) {
+        indexinitPkms--;
+        let contentRef = document.getElementById("currentPkmCard");
+        contentRef.innerHTML = "";
+        contentRef.innerHTML += getCurrentPkmCardTemplate(indexinitPkms);
+        loadContentCurrentPkmCard(indexinitPkms);
+    }
+}
+
+
+function nextPkmCard(indexinitPkms) {
+    if (indexinitPkms +1 < initPkms.length) {
+        indexinitPkms++;
+        let contentRef = document.getElementById("currentPkmCard");
+        contentRef.innerHTML = "";
+        contentRef.innerHTML += getCurrentPkmCardTemplate(indexinitPkms);
+        loadContentCurrentPkmCard(indexinitPkms);
+    }
 }

@@ -69,15 +69,33 @@
     width: 100%;
     height: 344px;
     display: flex;
-    justify-content: center;
-    align-items: end;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.arrow {
+    width: 32px;
+    height: 160px;
+    padding: 0 8px 0 8px;
+    object-fit: fill;
+    filter: invert(85%);
+}
+
+
+.arrow:hover {
+    cursor: pointer;
+    transform: scale(108%);
 }
 
 
 #currentPkmImg {
     height: 100%;
-    width: 90%;
+    width: 380px;
     padding: 80px 64px 0 64px;
+    align-self: end;
+    object-fit: contain;
+    overflow: visible;
     filter: drop-shadow(0 0 12px rgba(255,255,255));
 }
 
@@ -128,7 +146,7 @@
 
 
 .section_about {
-    padding: 40px 40px 0 40px;
+    padding: 64px 40px 0 40px;
     display: flex;
     flex-direction: column;
     gap: 40px;
