@@ -80,7 +80,7 @@ function changeBgCurrentPkmCard(indexinitPkms) {
 }
 
 
-function loadCurrentPkmInfoCategory(clickedBtn, indexinitPkms) {
+async function loadCurrentPkmInfoCategory(clickedBtn, indexinitPkms) {
     //console.log(initPkms[indexinitPkms]);
     let contentRef = document.getElementById("currentPkmInfo");
     contentRef.innerHTML = "";
@@ -96,8 +96,9 @@ function loadCurrentPkmInfoCategory(clickedBtn, indexinitPkms) {
             contentRef.innerHTML += getSectionStatsTemplate(indexinitPkms);
             break;
         case 'Evolution':
-            loadCurrentEvoChain(indexinitPkms);
-            contentRef.innerHTML += getEvolutionTemplate(indexinitPkms);
+            let evoChainIndexArray = await loadCurrentEvoChain(indexinitPkms);
+            //console.log(indexEvoChainPkm);
+            contentRef.innerHTML += getEvolutionTemplate(evoChainIndexArray);
             break;
         case 'Sound':
             contentRef.innerHTML += getSectionSoundTemplate(indexinitPkms);
@@ -122,12 +123,13 @@ function loadCurrentAbilities(indexinitPkms) {
 }
 
 
-function loadCurrentEvoChain(indexinitPkms) {
+async function loadCurrentEvoChain(indexinitPkms) {
     let PkmId = indexinitPkms + 1;
-    //console.log(initPkms[indexinitPkms]);
     let PKM_SPECIES_URL = "https://pokeapi.co/api/v2/pokemon-species/" + PkmId;
     //console.log(PKM_SPECIES_URL);
-    fetchEvoChainUrl(PKM_SPECIES_URL);
+    let EVOLUTION_URL = await fetchEvoChainUrl(PKM_SPECIES_URL);
+    return evoChainIndexArray = await fetchEvoChainPkmUrl(EVOLUTION_URL);
+    //console.log(indexEvoChainPkm);
 }
 
 
@@ -135,9 +137,7 @@ async function fetchEvoChainUrl(PKM_SPECIES_URL) {
     let pokeApi = await fetch(PKM_SPECIES_URL);
     let pokeApiData = await pokeApi.json();
     //console.log(pokeApiData);
-    let EVOLUTION_URL = pokeApiData.evolution_chain.url;
-    //console.log(EVOLUTION_URL);
-    fetchEvoChainPkmUrl(EVOLUTION_URL);
+    return pokeApiData.evolution_chain.url;
 }
 
 
@@ -147,32 +147,59 @@ async function fetchEvoChainPkmUrl(EVOLUTION_URL) {
     //console.log(pokeApi);
     let pokeApiData = await pokeApi.json();
     //console.log(pokeApiData);
-    loadEvoChainPkmsIndex(pokeApiData);
+
+    let evoChainIndexArray = [
+        loadEvoChainStart(pokeApiData)-1,
+        loadEvoChainFirstEvo(pokeApiData)-1,
+        loadEvoChainSecondEvo(pokeApiData)-1
+    ]
+
+    //console.log(evoChainIndexArray)
+
+    return evoChainIndexArray;
 }
 
 
-function loadEvoChainPkmsIndex(pokeApiData) {
+function loadEvoChainStart(pokeApiData) {
     let evoChainStartUrl = pokeApiData.chain.species.url;
-    let evoChainStartPkmIndex = evoChainStartUrl.slice(42).slice(0, -1);
-    
+    return evoChainStartUrl.slice(42).slice(0, -1);
+}
 
+
+function loadEvoChainFirstEvo(pokeApiData) {
     let evoChainFirstEvoUrl = pokeApiData.chain.evolves_to[0].species.url;
-    let evoChainFirstEvoPkmIndex = evoChainFirstEvoUrl.slice(42).slice(0, -1);
-    
+    return evoChainFirstEvoUrl.slice(42).slice(0, -1);
+}
 
+
+function loadEvoChainSecondEvo(pokeApiData) {
     let evoChainSecondEvoUrl = pokeApiData.chain.evolves_to[0].evolves_to[0].species.url;
-    let evoChainSeconEvoPkmIndex = evoChainSecondEvoUrl.slice(42).slice(0, -1);
+    return evoChainSecondEvoUrl.slice(42).slice(0, -1);
+}
+
+
+// function loadEvoChainPkmsIndex(pokeApiData) {
+//     let evoChainStartUrl = pokeApiData.chain.species.url;
+//     let evoChainStartPkmIndex = evoChainStartUrl.slice(42).slice(0, -1);
     
 
-    loadEvoChainImgs(evoChainStartPkmIndex, evoChainFirstEvoPkmIndex, evoChainSeconEvoPkmIndex);
-}
+//     let evoChainFirstEvoUrl = pokeApiData.chain.evolves_to[0].species.url;
+//     let evoChainFirstEvoPkmIndex = evoChainFirstEvoUrl.slice(42).slice(0, -1);
+    
+
+//     let evoChainSecondEvoUrl = pokeApiData.chain.evolves_to[0].evolves_to[0].species.url;
+//     let evoChainSeconEvoPkmIndex = evoChainSecondEvoUrl.slice(42).slice(0, -1);
+    
+
+//     loadEvoChainImgs(evoChainStartPkmIndex, evoChainFirstEvoPkmIndex, evoChainSeconEvoPkmIndex);
+// }
 
 
-function loadEvoChainImgs(evoChainStartPkmIndex, evoChainFirstEvoPkmIndex, evoChainSeconEvoPkmIndex) {
-    console.log(evoChainStartPkmIndex);
-    console.log(evoChainFirstEvoPkmIndex);
-    console.log(evoChainSeconEvoPkmIndex);
-}
+// function loadEvoChainImgs(evoChainStartPkmIndex, evoChainFirstEvoPkmIndex, evoChainSeconEvoPkmIndex) {
+//     console.log(evoChainStartPkmIndex);
+//     console.log(evoChainFirstEvoPkmIndex);
+//     console.log(evoChainSeconEvoPkmIndex);
+// }
 
 
 function playPkmSound(indexinitPkms) {
