@@ -5,8 +5,15 @@ let initPkmsUrls = [];
 let initPkms = [];
 
 
-function init() {
-    loadinitPkmsUrls();
+async function init() {
+    let overlayContentRef = document.getElementById("overlayLoadingScreen")
+    overlayContentRef.classList.remove("d_none");
+    await loadinitPkmsUrls();
+    await closeLoadingScreen(overlayContentRef);
+}
+
+async function closeLoadingScreen(overlayContentRef) {
+    overlayContentRef.classList.add("d_none");
 }
 
 
@@ -14,7 +21,7 @@ async function loadinitPkmsUrls() {
     let pokeApi = await fetch(BASE_URL);
     let pokeApiData = await pokeApi.json();
     initPkmsUrls = pokeApiData.results;
-    loadinitPkmks();
+    await loadinitPkmks();
 }
 
 
@@ -25,7 +32,7 @@ async function loadinitPkmks() {
         let initPkmsEntrie = await pkmDataApi.json();
         initPkms.push(initPkmsEntrie);
         document.getElementById("pokedex").innerHTML += getPkmCardTemplate(indexinitPkms);
-        loadPkmsTypes(indexinitPkms);
+        await loadPkmsTypes(indexinitPkms);
     }
 }
 
@@ -57,7 +64,7 @@ function renderCurrentPkmCard(indexinitPkms) {
 
 
 function toggleOverlayPkmCard() {
-    document.getElementById("overlay").classList.toggle("d_none");
+    document.getElementById("overlayPkmCard").classList.toggle("d_none");
     document.getElementById("currentPkmCard").classList.toggle("d_none");
     document.getElementById("body").classList.toggle("attach_bg");
 }
@@ -235,13 +242,13 @@ function nextPkmCard(indexinitPkms) {
 }
 
 
-function loadMorePkm() {
+async function loadMorePkm() {
     offset = offset + 20;
-    //console.log(offset);
-
     let NEXT_URL = "https://pokeapi.co/api/v2/pokemon/?offset=" + offset + "&limit=20";
-    //console.log(NEXT_URL);
-    fetchNextPkms(NEXT_URL);
+    let overlayContentRef = document.getElementById("overlayLoadingScreen")
+    overlayContentRef.classList.remove("d_none");
+    await fetchNextPkms(NEXT_URL);
+    await closeLoadingScreen(overlayContentRef);
 }
 
 
@@ -253,7 +260,7 @@ async function fetchNextPkms(NEXT_URL) {
     for (let indexinitPkms = 0; indexinitPkms < 20; indexinitPkms++) {
         initPkmsUrls.push(nextPkmsUrls[indexinitPkms]);
     }
-    loadNextPkmks();
+    await loadNextPkmks();
     //console.log(initPkmsUrls);
 }
 
@@ -268,6 +275,6 @@ async function loadNextPkmks() {
         let initPkmsEntrie = await pkmDataApi.json();
         initPkms.push(initPkmsEntrie);
         document.getElementById("pokedex").innerHTML += getPkmCardTemplate(indexinitPkms);
-        loadPkmsTypes(indexinitPkms);
+        await loadPkmsTypes(indexinitPkms);
     }
 }

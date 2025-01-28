@@ -27,7 +27,11 @@
 
         <section id="pokedex" class="display_flex_centered"></section>
 
-        <section onclick="toggleOverlayPkmCard()" id="overlay" class="d_none"></section>
+        <section onclick="toggleOverlayPkmCard()" id="overlayPkmCard" class="overlay d_none"></section>
+        <section id="overlayLoadingScreen" class="overlay display_flex_centered d_none">
+            <img src="./assets/pokeball_gif.gif">
+            <span>Pokédex wird geladen ...</span>
+        </section>
 
         <section id="currentPkmCard" class="display_flex_centered d_none">
         </section>
@@ -38,7 +42,8 @@
     </main>
     
     <footer class="resp_height resp_padding">
-        <span>schematic_pokeball: https://icon-library.com/icon/pokeball-desktop-icon-8.html.html</span>
+        <span>schematic_pokeball: https://icon-library.com/icon/pokeball-desktop-icon-8.html.html</span><br>
+        <span>pokeball_gif: https://i.gifer.com/4xjS.gif</span>
     </footer>
 </body>
 
