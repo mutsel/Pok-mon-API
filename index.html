@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Poké API</title>
+    <link rel="icon" type="image/x-icon" href="./assets/pokeball.png">
 
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./styles/standard.css">
@@ -16,9 +17,13 @@
 </head>
 
 <body onload="init()">
-    <header class="resp_height resp_padding"></header>
+    <header class="resp_height resp_padding">
+        
+    </header>
 
     <main class="resp_padding display_flex_centered">
+
+        <section id="pokeballBg"><img src="./assets/schematic_pokeball.jpg"></section>
 
         <section id="pokedex" class="display_flex_centered"></section>
 
@@ -31,8 +36,10 @@
             <img src="./assets/arrow_bottom.png" onclick="loadMorePkm()">
         </section>
     </main>
-
-    <footer class="resp_height resp_padding"></footer>
+    
+    <footer class="resp_height resp_padding">
+        <span>schematic_pokeball: https://icon-library.com/icon/pokeball-desktop-icon-8.html.html</span>
+    </footer>
 </body>
 
 </html>
