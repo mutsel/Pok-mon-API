@@ -60,7 +60,9 @@
 
 
 .pkm_card_name {
+    max-height: 64px;
     margin-top: -8px;
+    overflow-y: clip;
     font-family: Pokemon;
     font-size: 22px;
     font-weight: 400;

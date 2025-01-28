@@ -126,6 +126,11 @@ function getSectionStatsTemplate(indexinitPkms) {
 }
 
 
+function getEvolutionTemplate(indexinitPkms) {
+    return ``
+}
+
+
 function getSectionSoundTemplate(indexinitPkms) {
     return `<section class="section_sound display_flex_centered">
                 <img id="currentPkmImgSound" src="${initPkms[indexinitPkms].sprites.other.home.front_default}" onclick="playPkmSound(${indexinitPkms})">
