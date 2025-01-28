@@ -98,6 +98,7 @@ async function loadCurrentPkmInfoCategory(clickedBtn, indexinitPkms) {
         case 'Evolution':
             let evoChainIndexArray = await loadCurrentEvoChain(indexinitPkms);
             contentRef.innerHTML += getEvolutionTemplate();
+            //console.log(evoChainIndexArray);
             await loadCurrentEvoChainPkmImgs(evoChainIndexArray);
             break;
         case 'Sound':
@@ -149,9 +150,9 @@ async function fetchEvoChainPkmUrl(EVOLUTION_URL) {
     //console.log(pokeApiData);
 
     let evoChainIndexArray = [
-        loadEvoChainStart(pokeApiData) - 1,
-        loadEvoChainFirstEvo(pokeApiData) - 1,
-        loadEvoChainSecondEvo(pokeApiData) - 1
+        loadEvoChainStart(pokeApiData),
+        loadEvoChainFirstEvo(pokeApiData),
+        loadEvoChainSecondEvo(pokeApiData)
     ]
 
     //console.log(evoChainIndexArray)
@@ -162,30 +163,45 @@ async function fetchEvoChainPkmUrl(EVOLUTION_URL) {
 
 function loadEvoChainStart(pokeApiData) {
     let evoChainStartUrl = pokeApiData.chain.species.url;
-    return evoChainStartUrl.slice(42).slice(0, -1);
+    return evoChainStartUrl.slice(42).slice(0, -1) - 1;
 }
 
 
 function loadEvoChainFirstEvo(pokeApiData) {
-    let evoChainFirstEvoUrl = pokeApiData.chain.evolves_to[0].species.url;
-    return evoChainFirstEvoUrl.slice(42).slice(0, -1);
+    let testFirstEvo = pokeApiData.chain.evolves_to.length;
+
+    if (testFirstEvo == 1) {
+        let evoChainFirstEvoUrl = pokeApiData.chain.evolves_to[0].species.url;
+        return evoChainFirstEvoUrl.slice(42).slice(0, -1) - 1;
+    } else {
+        return -1
+    }
 }
 
 
 function loadEvoChainSecondEvo(pokeApiData) {
-    let evoChainSecondEvoUrl = pokeApiData.chain.evolves_to[0].evolves_to[0].species.url;
-    return evoChainSecondEvoUrl.slice(42).slice(0, -1);
+    let testFirstEvo = pokeApiData.chain.evolves_to.length;
+    let testSecondEvo = pokeApiData.chain.evolves_to[0].evolves_to.length;
+
+    if (testSecondEvo == 1 && testFirstEvo == 1) {
+        let evoChainSecondEvoUrl = pokeApiData.chain.evolves_to[0].evolves_to[0].species.url;
+        return evoChainSecondEvoUrl.slice(42).slice(0, -1) - 1;
+    } else {
+        return -1
+    }
 }
 
 
 async function loadCurrentEvoChainPkmImgs(evoChainIndexArray) {
     let contentRef = document.getElementById("evoChainImgs");
     for (let indexEvoChain = 0; indexEvoChain < evoChainIndexArray.length; indexEvoChain++) {
-        contentRef.innerHTML += getEvoChainPkmImgsTemplate(evoChainIndexArray, indexEvoChain);
+        if (evoChainIndexArray[indexEvoChain] !== -1) {
+            contentRef.innerHTML += getEvoChainPkmImgsTemplate(evoChainIndexArray, indexEvoChain);
+        }
     }
-    let arrowToRemoveId = evoChainIndexArray.length-1;
-    let arrowToRemove = document.getElementById("evolutionArrow" + arrowToRemoveId);
-    arrowToRemove.remove();
+
+    let arrowToRemove = document.getElementById("evoChainImgs").lastChild;
+    arrowToRemove = arrowToRemove.remove();
 }
 
 

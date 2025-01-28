@@ -133,7 +133,7 @@ function getEvolutionTemplate() {
 
 
 function getEvoChainPkmImgsTemplate(evoChainIndexArray, indexEvoChain) {
-    return `<img src="${initPkms[evoChainIndexArray[indexEvoChain]].sprites.other.dream_world.front_default}" class="evolution_img">
+    return `<img id="evolutionPkm${indexEvoChain}" src="${initPkms[evoChainIndexArray[indexEvoChain]].sprites.other.dream_world.front_default}" class="evolution_img">
             <img id="evolutionArrow${indexEvoChain}" src='./assets/evo_chain_arrow.svg' class='evolution_arrow'>`
 }
 
