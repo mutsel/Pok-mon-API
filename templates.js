@@ -34,7 +34,7 @@ function getCurrentPkmCardTemplate(indexinitPkms) {
                     <button onclick="loadCurrentPkmInfoCategory('About', ${indexinitPkms})">About</button>
                     <button onclick="loadCurrentPkmInfoCategory('Stats', ${indexinitPkms})">Stats</button>
                     <button onclick="loadCurrentPkmInfoCategory('Evolution', ${indexinitPkms})">Evolution</button>
-                    <button onclick="loadCurrentPkmInfoCategory('Pokédex', ${indexinitPkms})">Sound</button>
+                    <button onclick="loadCurrentPkmInfoCategory('Sound', ${indexinitPkms})">Sound</button>
                 </div>
                 <div id="currentPkmInfo"></div>
             </div>`
@@ -122,5 +122,13 @@ function getSectionStatsTemplate(indexinitPkms) {
                             </div>
                     </div>
                 </div>
+            </section>`
+}
+
+
+function getSectionSoundTemplate(indexinitPkms) {
+    return `<section class="section_sound display_flex_centered">
+                <img id="currentPkmImgSound" src="${initPkms[indexinitPkms].sprites.other.home.front_default}" onclick="playPkmSound(${indexinitPkms})">
+                <span>Click Pokémon to play its sound!</span>
             </section>`
 }

@@ -63,20 +63,12 @@ function toggleOverlayPkmCard() {
 
 
 function loadContentCurrentPkmCard(indexinitPkms) {
-    playPkmSound(indexinitPkms);
     changeBgCurrentPkmCard(indexinitPkms);
     PkmId = indexinitPkms + 1;
     document.getElementById("currentPkmId").innerHTML = "#" + PkmIdThreeDigits(PkmId);
     document.getElementById("currentPkmName").innerHTML = initPkms[indexinitPkms].name.charAt(0).toUpperCase() + initPkms[indexinitPkms].name.slice(1);
     document.getElementById("currentPkmImg").src = initPkms[indexinitPkms].sprites.other.dream_world.front_default;
     loadCurrentPkmInfoCategory("", indexinitPkms);
-}
-
-
-function playPkmSound(indexinitPkms) {
-    let audioPkmSound = new Audio (initPkms[indexinitPkms].cries.latest);
-    audioPkmSound.volume = 0.1;
-    audioPkmSound.play();
 }
 
 
@@ -89,7 +81,7 @@ function changeBgCurrentPkmCard(indexinitPkms) {
 
 
 function loadCurrentPkmInfoCategory(clickedBtn, indexinitPkms) {
-    //console.log(initPkms[indexinitPkms]);
+    console.log(initPkms[indexinitPkms]);
     let contentRef = document.getElementById("currentPkmInfo");
     contentRef.innerHTML = "";
     let currentCategory = clickedBtn;
@@ -106,8 +98,8 @@ function loadCurrentPkmInfoCategory(clickedBtn, indexinitPkms) {
         case 'Evolution':
             console.log(currentCategory);
             break;
-        case 'Pokédex':
-            console.log(currentCategory);
+        case 'Sound':
+            contentRef.innerHTML += getSectionSoundTemplate(indexinitPkms);
             break;
     }
 }
@@ -126,6 +118,13 @@ function loadCurrentAbilities(indexinitPkms) {
         contentRef.innerHTML += initPkms[indexinitPkms].abilities[indexPkmAbility].ability.name + ", ";
     }
     contentRef.innerHTML = contentRef.innerHTML.slice(0, -2);
+}
+
+
+function playPkmSound(indexinitPkms) {
+    let audioPkmSound = new Audio (initPkms[indexinitPkms].cries.latest);
+    audioPkmSound.volume = 0.1;
+    audioPkmSound.play();
 }
 
 
