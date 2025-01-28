@@ -59,6 +59,7 @@ function renderCurrentPkmCard(indexinitPkms) {
 function toggleOverlayPkmCard() {
     document.getElementById("overlay").classList.toggle("d_none");
     document.getElementById("currentPkmCard").classList.toggle("d_none");
+    document.getElementById("body").classList.toggle("attach_bg");
 }
 
 
