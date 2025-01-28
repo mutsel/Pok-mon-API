@@ -126,15 +126,15 @@ function getSectionStatsTemplate(indexinitPkms) {
 }
 
 
-function getEvolutionTemplate(evoChainIndexArray) {
-    console.log(evoChainIndexArray);
-    return `<section class="section_evoluion display_flex_centered">
-                <img src="${initPkms[evoChainIndexArray[0]].sprites.other.dream_world.front_default}" class="evolution_img">
-                <img src="./assets/evo_chain_arrow.svg" class="evolution_arrow">
-                <img src="${initPkms[evoChainIndexArray[1]].sprites.other.dream_world.front_default}" class="evolution_img">
-                <img src="./assets/evo_chain_arrow.svg" class="evolution_arrow">
-                <img src="${initPkms[evoChainIndexArray[2]].sprites.other.dream_world.front_default}" class="evolution_img">
+function getEvolutionTemplate() {
+    return `<section id="evoChainImgs" class="section_evoluion display_flex_centered">
             </section>`
+}
+
+
+function getEvoChainPkmImgsTemplate(evoChainIndexArray, indexEvoChain) {
+    return `<img src="${initPkms[evoChainIndexArray[indexEvoChain]].sprites.other.dream_world.front_default}" class="evolution_img">
+            <img id="evolutionArrow${indexEvoChain}" src='./assets/evo_chain_arrow.svg' class='evolution_arrow'>`
 }
 
 
