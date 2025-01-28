@@ -127,7 +127,8 @@ function getSectionStatsTemplate(indexinitPkms) {
 
 
 function getEvolutionTemplate(indexinitPkms) {
-    return ``
+    return `
+    `
 }
 
 

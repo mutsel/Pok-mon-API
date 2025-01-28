@@ -72,3 +72,32 @@
 
 background-image: radial-gradient(rgb(219, 221, 224), rgb(180, 180, 180), rgb(150, 150, 150));
 box-shadow: inset 0px 0px 12px 8px rgb(150, 150, 150);
+
+
+
+
+
+
+function loadCurrentEvoChain(indexinitPkms) {
+    PkmId = indexinitPkms + 1;
+    let EVOLUTION_URL = "https://pokeapi.co/api/v2/evolution-chain/" + PkmId;
+    fetchEvoChainData(EVOLUTION_URL);
+}
+
+
+async function fetchEvoChainData(EVOLUTION_URL, indexinitPkms) {
+    //console.log(EVOLUTION_URL);
+    let pokeApi = await fetch(EVOLUTION_URL);
+    //console.log(pokeApi);
+    let pokeApiData = await pokeApi.json();
+    console.log(pokeApiData);
+    let evoChainStart = pokeApiData.chain.species.name;
+    console.log(evoChainStart);
+    let evoChainFirstEvo = pokeApiData.chain.evolves_to[0].species.name;
+    console.log(evoChainFirstEvo);
+    let evoChainSecondEvo = pokeApiData.chain.evolves_to[0].evolves_to[0].species.name;
+    console.log(evoChainSecondEvo);
+    //for (let indexinitPkms = 0; indexinitPkms < 20; indexinitPkms++) {
+    //    initPkmsUrls.push(nextPkmsUrls[indexinitPkms]);
+    //}
+}
