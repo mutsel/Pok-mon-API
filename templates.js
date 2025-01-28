@@ -34,7 +34,7 @@ function getCurrentPkmCardTemplate(indexinitPkms) {
                     <button onclick="loadCurrentPkmInfoCategory('About', ${indexinitPkms})">About</button>
                     <button onclick="loadCurrentPkmInfoCategory('Stats', ${indexinitPkms})">Stats</button>
                     <button onclick="loadCurrentPkmInfoCategory('Evolution', ${indexinitPkms})">Evolution</button>
-                    <button onclick="loadCurrentPkmInfoCategory('Pokédex', ${indexinitPkms})">Pokédex</button>
+                    <button onclick="loadCurrentPkmInfoCategory('Pokédex', ${indexinitPkms})">Sound</button>
                 </div>
                 <div id="currentPkmInfo"></div>
             </div>`

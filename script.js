@@ -63,12 +63,20 @@ function toggleOverlayPkmCard() {
 
 
 function loadContentCurrentPkmCard(indexinitPkms) {
+    playPkmSound(indexinitPkms);
     changeBgCurrentPkmCard(indexinitPkms);
     PkmId = indexinitPkms + 1;
     document.getElementById("currentPkmId").innerHTML = "#" + PkmIdThreeDigits(PkmId);
     document.getElementById("currentPkmName").innerHTML = initPkms[indexinitPkms].name.charAt(0).toUpperCase() + initPkms[indexinitPkms].name.slice(1);
     document.getElementById("currentPkmImg").src = initPkms[indexinitPkms].sprites.other.dream_world.front_default;
     loadCurrentPkmInfoCategory("", indexinitPkms);
+}
+
+
+function playPkmSound(indexinitPkms) {
+    let audioPkmSound = new Audio (initPkms[indexinitPkms].cries.latest);
+    audioPkmSound.volume = 0.1;
+    audioPkmSound.play();
 }
 
 
