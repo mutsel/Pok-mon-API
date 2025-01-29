@@ -6,6 +6,7 @@ let initPkms = [];
 
 
 async function init() {
+    clearPokedex();
     openLoadingScreen();
     await loadinitPkmsUrls();
     await closeLoadingScreen();
@@ -35,7 +36,8 @@ async function loadinitPkmsUrls() {
 
 
 async function loadinitPkmks() {
-    for (let indexinitPkms = 0; indexinitPkms < 20; indexinitPkms++) {
+    //console.log(initPkmsUrls);
+    for (let indexinitPkms = 0; indexinitPkms < initPkmsUrls.length; indexinitPkms++) {
         let PKM_URL = initPkmsUrls[indexinitPkms].url;
         let pkmDataApi = await fetch(PKM_URL);
         let initPkmsEntrie = await pkmDataApi.json();
@@ -288,9 +290,71 @@ async function loadNextPkmks() {
 }
 
 
-function searchPkmName() {
+function clearPokedex() {
+    let contentRef = document.getElementById("pokedex");
+    contentRef.innerHTML = "";
+    initPkmsUrls = [];
+    initPkms = [];
+}
+
+
+async function searchPkmName() {
     let searchInput = document.getElementById('searchInput').value;
+    clearPokedex();
     if (searchInput.length >= 3) {
-        openLoadingScreen();
+        // openLoadingScreen();
+        await filterPkmNames(searchInput);
+        // await closeLoadingScreen();
     }
 }
+
+
+async function filterPkmNames(searchInput) {
+    let TOTAL_PKM_URL = "https://pokeapi.co/api/v2/pokemon?offset=0&limit=1304";
+    let pokeApi = await fetch(TOTAL_PKM_URL);
+    let pokeApiData = await pokeApi.json();
+    //console.log(pokeApiData.results);
+    let filteredPkmNames = checkLetters(pokeApiData, searchInput);
+    //console.log(filteredPkmNames);
+}
+
+
+async function checkLetters(pokeApiData, searchInput) {
+    pokeApiResults = pokeApiData.results;
+    //console.log(pokeApiResults);
+
+    for (let indexinitPkms = 0; indexinitPkms < pokeApiResults.length; indexinitPkms++) {
+        if (searchInput == pokeApiResults[indexinitPkms].name) {
+            initPkmsUrls.push(pokeApiResults[indexinitPkms]);
+            console.log(initPkmsUrls);
+            loadinitPkmks();
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // let filteredPkmArray = pokeApiResults.filter(myfunc);
+    // function myfunc(searchInput) {
+    //     pokeApiResults.name == searchInput;
+    // };
+    // console.log(filteredPkmArray);
+
+
+
+    // for (let indexTotalPkm = 0; indexTotalPkm < pokeApiData.results.length; indexTotalPkm++) {
+    //     let pokeApiNames = pokeApiData.results[indexTotalPkm].name;
+    //     let searchInputIncluded = pokeApiNames.includes(searchInput);
+    //     console.log(searchInputIncluded);
+    // }
+    //return ;
