@@ -43,6 +43,10 @@ async function loadinitPkmks() {
         let initPkmsEntrie = await pkmDataApi.json();
         initPkms.push(initPkmsEntrie);
         document.getElementById("pokedex").innerHTML += getPkmCardTemplate(indexinitPkms);
+        if (initPkms[indexinitPkms].sprites.other.dream_world.front_default == null) {
+            contentRef = document.getElementById("pkmImg" + initPkms[indexinitPkms].id);
+            alternativeImg(contentRef, indexinitPkms);
+        }
         await loadPkmsTypes(indexinitPkms);
     }
 }
@@ -62,6 +66,11 @@ async function loadPkmsTypes(indexinitPkms) {
 
     let firstType = initPkms[indexinitPkms].types[0].type.name;
     document.getElementById("pkm_" + initPkms[indexinitPkms].id).style.backgroundImage = "url('./assets/icons/" + firstType + ".svg')";
+}
+
+
+function alternativeImg(contentRef, indexinitPkms) {
+    contentRef.src= initPkms[indexinitPkms].sprites.other.home.front_default;
 }
 
 
@@ -87,6 +96,10 @@ function loadContentCurrentPkmCard(indexinitPkms) {
     document.getElementById("currentPkmId").innerHTML = "#" + PkmIdThreeDigits(PkmId);
     document.getElementById("currentPkmName").innerHTML = initPkms[indexinitPkms].name.charAt(0).toUpperCase() + initPkms[indexinitPkms].name.slice(1);
     document.getElementById("currentPkmImg").src = initPkms[indexinitPkms].sprites.other.dream_world.front_default;
+    if (initPkms[indexinitPkms].sprites.other.dream_world.front_default == null) {
+        contentRef = document.getElementById("currentPkmImg");
+        alternativeImg(contentRef, indexinitPkms);
+    }
     loadCurrentPkmInfoCategory("", indexinitPkms);
 }
 
@@ -330,6 +343,6 @@ function findFilteredPkmNames(pokeApiResults, totalPkmNames, searchInput) {
         let indexSearchResultPkm = totalPkmNames.indexOf(searchResults[indexFilteredPkms]);
         initPkmsUrls.push(pokeApiResults[indexSearchResultPkm]);
     }
-    
+
     loadinitPkmks();
 }

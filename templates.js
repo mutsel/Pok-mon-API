@@ -1,7 +1,7 @@
 function getPkmCardTemplate(indexinitPkms) {
     return `<div class="pkm_card">
             <div onclick="renderCurrentPkmCard(${indexinitPkms})" id="pkm_${initPkms[indexinitPkms].id}" class="pkm_card_content">
-                <img src="${initPkms[indexinitPkms].sprites.other.dream_world.front_default}" class="pkm_card_img position_top">
+                <img id="pkmImg${initPkms[indexinitPkms].id}" src="${initPkms[indexinitPkms].sprites.other.dream_world.front_default}" class="pkm_card_img position_top">
                 <span class="pkm_card_id position_top">#${PkmIdThreeDigits(initPkms[indexinitPkms].id)}</span>
                 <span class="pkm_card_name position_top">${initPkms[indexinitPkms].name.charAt(0).toUpperCase() + initPkms[indexinitPkms].name.slice(1)}</span>
                 <div id="pkm_card_types_${initPkms[indexinitPkms].id}"class="pkm_card_types position_top"></div>
