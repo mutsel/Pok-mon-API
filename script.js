@@ -1,4 +1,5 @@
 const BASE_URL = "https://pokeapi.co/api/v2/pokemon/?offset=0&limit=20";
+const TOTAL_PKM_URL = "https://pokeapi.co/api/v2/pokemon?offset=0&limit=1304";
 let offset = 0;
 
 let initPkmsUrls = [];
@@ -38,7 +39,6 @@ async function fetchinitPkmsUrls() {
 
 
 async function loadinitPkmks() {
-    //console.log(initPkmsUrls);
     for (let indexinitPkms = 0; indexinitPkms < initPkmsUrls.length; indexinitPkms++) {
         let PKM_URL = initPkmsUrls[indexinitPkms].url;
         let pkmDataApi = await fetch(PKM_URL);
@@ -65,14 +65,13 @@ async function loadPkmsTypes(indexinitPkms) {
     for (let indexPkmType = 0; indexPkmType < initPkms[indexinitPkms].types.length; indexPkmType++) {
         document.getElementById("pkm_card_types_" + initPkms[indexinitPkms].id).innerHTML += getPkmTypesNameTemplate(indexinitPkms, indexPkmType);
     }
-
     let firstType = initPkms[indexinitPkms].types[0].type.name;
     document.getElementById("pkm_" + initPkms[indexinitPkms].id).style.backgroundImage = "url('./assets/icons/" + firstType + ".svg')";
 }
 
 
 function alternativeImg(contentRef, indexinitPkms) {
-    contentRef.src= initPkms[indexinitPkms].sprites.other.home.front_default;
+    contentRef.src = initPkms[indexinitPkms].sprites.other.home.front_default;
 }
 
 
@@ -115,7 +114,6 @@ function changeBgCurrentPkmCard(indexinitPkms) {
 
 
 async function loadCurrentPkmInfoCategory(clickedBtn, indexinitPkms) {
-    //console.log(initPkms[indexinitPkms]);
     let contentRef = document.getElementById("currentPkmInfo");
     contentRef.innerHTML = "";
     let currentCategory = clickedBtn;
@@ -132,7 +130,6 @@ async function loadCurrentPkmInfoCategory(clickedBtn, indexinitPkms) {
         case 'Evolution':
             let evoChainIndexArray = await loadCurrentEvoChain(indexinitPkms);
             contentRef.innerHTML += getEvolutionTemplate();
-            //console.log(evoChainIndexArray);
             await loadCurrentEvoChainPkmImgs(evoChainIndexArray);
             break;
         case 'Sound':
@@ -161,36 +158,21 @@ function loadCurrentAbilities(indexinitPkms) {
 async function loadCurrentEvoChain(indexinitPkms) {
     let PkmId = indexinitPkms + 1;
     let PKM_SPECIES_URL = "https://pokeapi.co/api/v2/pokemon-species/" + PkmId;
-    //console.log(PKM_SPECIES_URL);
-    let EVOLUTION_URL = await fetchEvoChainUrl(PKM_SPECIES_URL);
-    return evoChainIndexArray = await fetchEvoChainPkmUrl(EVOLUTION_URL);
-    //console.log(indexEvoChainPkm);
-}
-
-
-async function fetchEvoChainUrl(PKM_SPECIES_URL) {
     let pokeApi = await fetch(PKM_SPECIES_URL);
     let pokeApiData = await pokeApi.json();
-    //console.log(pokeApiData);
-    return pokeApiData.evolution_chain.url;
+    let EVOLUTION_URL = pokeApiData.evolution_chain.url;
+    return evoChainIndexArray = await fetchEvoChainPkmUrl(EVOLUTION_URL);
 }
 
 
 async function fetchEvoChainPkmUrl(EVOLUTION_URL) {
-    //console.log(EVOLUTION_URL);
     let pokeApi = await fetch(EVOLUTION_URL);
-    //console.log(pokeApi);
     let pokeApiData = await pokeApi.json();
-    //console.log(pokeApiData);
-
     let evoChainIndexArray = [
         loadEvoChainStart(pokeApiData),
         loadEvoChainFirstEvo(pokeApiData),
         loadEvoChainSecondEvo(pokeApiData)
     ]
-
-    //console.log(evoChainIndexArray)
-
     return evoChainIndexArray;
 }
 
@@ -203,7 +185,6 @@ function loadEvoChainStart(pokeApiData) {
 
 function loadEvoChainFirstEvo(pokeApiData) {
     let testFirstEvo = pokeApiData.chain.evolves_to.length;
-
     if (testFirstEvo == 1) {
         let evoChainFirstEvoUrl = pokeApiData.chain.evolves_to[0].species.url;
         return evoChainFirstEvoUrl.slice(42).slice(0, -1) - 1;
@@ -214,26 +195,29 @@ function loadEvoChainFirstEvo(pokeApiData) {
 
 
 function loadEvoChainSecondEvo(pokeApiData) {
-    let testFirstEvo = pokeApiData.chain.evolves_to.length;
-    let testSecondEvo = pokeApiData.chain.evolves_to[0].evolves_to.length;
-
-    if (testSecondEvo == 1 && testFirstEvo == 1) {
-        let evoChainSecondEvoUrl = pokeApiData.chain.evolves_to[0].evolves_to[0].species.url;
-        return evoChainSecondEvoUrl.slice(42).slice(0, -1) - 1;
-    } else {
-        return -1
-    }
+   let testFirstEvo = pokeApiData.chain.evolves_to.length;
+    if (testFirstEvo == 1) {
+        let testSecondEvo = pokeApiData.chain.evolves_to[0].evolves_to.length;
+        if (testSecondEvo == 1) {
+            let evoChainSecondEvoUrl = pokeApiData.chain.evolves_to[0].evolves_to[0].species.url;
+            return evoChainSecondEvoUrl.slice(42).slice(0, -1) - 1;
+        } return -1
+    } return -1
 }
 
 
 async function loadCurrentEvoChainPkmImgs(evoChainIndexArray) {
-    let contentRef = document.getElementById("evoChainImgs");
+    let evoChainContentRef = document.getElementById("evoChainImgs");
     for (let indexEvoChain = 0; indexEvoChain < evoChainIndexArray.length; indexEvoChain++) {
         if (evoChainIndexArray[indexEvoChain] !== -1) {
-            contentRef.innerHTML += getEvoChainPkmImgsTemplate(evoChainIndexArray, indexEvoChain);
+            evoChainContentRef.innerHTML += getEvoChainPkmImgsTemplate(evoChainIndexArray, indexEvoChain);
+            if (initPkms[evoChainIndexArray[indexEvoChain]].sprites.other.dream_world.front_default == null) {
+                contentRef = document.getElementById("evolutionPkm" + indexEvoChain);
+                let indexinitPkms = indexEvoChain;
+                alternativeImg(contentRef, indexinitPkms);
+            }
         }
     }
-
     let arrowToRemove = document.getElementById("evoChainImgs").lastChild;
     arrowToRemove = arrowToRemove.remove();
 }
@@ -281,21 +265,16 @@ async function fetchNextPkms(NEXT_URL) {
     let pokeApi = await fetch(NEXT_URL);
     let pokeApiData = await pokeApi.json();
     let nextPkmsUrls = pokeApiData.results;
-    //console.log(nextPkmsUrls);
     for (let indexinitPkms = 0; indexinitPkms < 20; indexinitPkms++) {
         initPkmsUrls.push(nextPkmsUrls[indexinitPkms]);
     }
     await loadNextPkmks();
-    //console.log(initPkmsUrls);
 }
 
 
 async function loadNextPkmks() {
-    //console.log(initPkmsUrls.length);
     for (let indexinitPkms = offset; indexinitPkms < offset + 20; indexinitPkms++) {
-        //console.log(initPkmsUrls.length);
         let PKM_URL = initPkmsUrls[indexinitPkms].url;
-        //console.log(PKM_URL);
         let pkmDataApi = await fetch(PKM_URL);
         let initPkmsEntrie = await pkmDataApi.json();
         initPkms.push(initPkmsEntrie);
@@ -326,7 +305,6 @@ async function searchPkmName() {
 
 
 async function fetchTotalPkms(searchInput) {
-    let TOTAL_PKM_URL = "https://pokeapi.co/api/v2/pokemon?offset=0&limit=1304";
     let pokeApi = await fetch(TOTAL_PKM_URL);
     let pokeApiData = await pokeApi.json();
     let pokeApiResults = pokeApiData.results;
@@ -339,13 +317,10 @@ function findFilteredPkmNames(pokeApiResults, totalPkmNames, searchInput) {
     for (let indexTotalPkms = 0; indexTotalPkms < pokeApiResults.length; indexTotalPkms++) {
         totalPkmNames.push(pokeApiResults[indexTotalPkms].name)
     }
-
     let searchResults = totalPkmNames.filter(name => name.includes(searchInput));
-
     for (let indexFilteredPkms = 0; indexFilteredPkms < searchResults.length; indexFilteredPkms++) {
         let indexSearchResultPkm = totalPkmNames.indexOf(searchResults[indexFilteredPkms]);
         initPkmsUrls.push(pokeApiResults[indexSearchResultPkm]);
     }
-
     loadinitPkmks();
 }
