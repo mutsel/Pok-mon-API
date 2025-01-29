@@ -44,7 +44,7 @@
     padding: 0;
     position: relative;
     top: -20px;
-    overflow: hidden;
+    overflow-y: visible;
     font-family: Pokemon;
     font-size: 32px;
     font-weight: 400;
@@ -94,7 +94,6 @@
 #currentPkmImg {
     height: 100%;
     width: 380px;
-    padding: 80px 64px 0 64px;
     align-self: end;
     object-fit: contain;
     overflow: visible;
@@ -147,14 +146,6 @@
 }
 
 
-.section_about {
-    padding: 64px 40px 0 40px;
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-}
-
-
 .info_category {
     display: flex;
     flex-direction: row;
@@ -163,6 +154,14 @@
     font-family: Roboto;
     font-size: 22px;
     font-weight: 500;
+}
+
+
+.section_about {
+    padding: 64px 40px 0 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
 }
 
 

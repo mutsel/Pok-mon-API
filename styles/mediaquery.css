@@ -1,0 +1,201 @@
+@media (min-width: 1920px) {
+    .header_content {
+        width: 1900px;
+    }
+
+    #pokedex {
+        width: 1900px;
+    }
+
+    .footer_content {
+        width: 1900px;
+    }
+}
+
+
+@media (max-width: 1250px) {
+    header h1 {
+        font-size: 40px;
+        font-weight: 500;
+        -webkit-text-stroke: 2px rgb(72, 102, 190);
+    }
+
+    .search_div {
+        height: 32px;
+    }
+
+    #searchInput {
+        font-size: 16px;
+    }
+
+    #searchSubmit {
+        height: 32px;
+    }
+
+    #overlayLoadingScreen {
+        font-size: 24px;
+    }
+
+    #overlayLoadingScreen img {
+        height: 208px;
+        width: 208px;
+    }
+
+    #loadMorePkm img {
+        width: 35%;
+        height: 96px;
+    }
+
+    #backToTop {
+        height: 72px;
+        width: 72px;
+    }
+
+    .pkm_card {
+        height: 224px;
+        width: 224px;
+        margin: 22px;
+        margin-bottom: 72px;
+    }
+
+    .pkm_card_content {
+        height: 184px;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .pkm_card_img {
+        min-height: 144px;
+    }
+
+    .pkm_card_id {
+        margin-top: 20px;
+    }
+
+    .pkm_card_name {
+        margin-top: -6px;
+        font-size: 20px;
+    }
+
+    .pkm_card_types {
+        margin-top: 12px;
+    }
+
+    .pkm_card_types div {
+        width: 40%;
+        padding: 5px 1px 5px 1px;
+        border-width: 3px;
+    }
+
+    #currentPkmCard {
+        width: 500px;
+        height: 800px;
+        border-radius: 28px;
+        border-width: 12px;
+    }
+
+    #currentPkmCardOverview {
+        padding-bottom: 8px;
+    }
+
+    #currentPkmTitle {
+        height: 56px;
+    }
+
+    #currentPkmId {
+        width: 10%;
+        padding-left: 12px;
+        font-size: 20px;
+    }
+
+    #currentPkmName {
+        top: -18px;
+        font-size: 28px;
+    }
+
+    #closeCurrentPkm {
+        padding-right: 12px;
+    }
+
+    #currentPkmFrame {
+        height: 304px;
+    }
+
+    .arrow {
+        width: 24px;
+        height: 120px;
+        padding: 0 6px 0 6px;
+    }
+
+    #currentPkmImg {
+        transform: scale(88%);
+    }
+
+    .current_pkm_navbar {
+        height: 36px;
+        margin: 6px 20px 0 20px;
+    }
+
+    .current_pkm_navbar button {
+        font-size: 20px;
+    }
+
+    #currentPkmCardContent {
+        border-top-left-radius: 24px;
+        border-top-right-radius: 24px;
+    }
+
+    #currentPkmInfo {
+        max-height: 384px;
+    }
+
+    .info_category {
+        font-size: 20px;
+    }
+
+    .section_about {
+        padding: 48px 32px 0 32px;
+        gap: 32px;
+    }
+
+    #typesIcons img {
+        height: 24px;
+        width: 24px;
+        margin: 0 6px 0 6px;
+        padding: 20px;
+    }
+
+    .section_stats {
+        padding: 48px 32px 0 32px;
+        gap: 28px;
+    }
+
+    .section_evoluion {
+        width: 100%;
+        height: 384px;
+        gap: 20px;
+    }
+
+    .evolution_img {
+        height: 96px;
+        width: 96px;
+    }
+
+    .evolution_arrow {
+        height: 56px;
+        width: 24px;
+    }
+
+    .section_sound {
+        height: 384px;
+    }
+
+    #currentPkmImgSound {
+        height: 200px;
+        width: 200px;
+        padding-bottom: 32px;
+    }
+}
+
+
+@media (max-width: 0) {}

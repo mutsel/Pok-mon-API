@@ -24,10 +24,15 @@ body {
 
 
 header {
-    padding-top: 24px;
-    padding-bottom: 24px;
     z-index: 1;
     background-color: rgb(75, 74, 74);
+}
+
+
+.header_content {
+    width: 100%;
+    padding-top: 24px;
+    padding-bottom: 24px;
     color: rgb(53, 52, 52);
     display: flex;
     justify-content: space-between;
@@ -36,7 +41,7 @@ header {
 
 
 header h1 {
-    margin-top: -40px;
+    margin-top: -32px;
     margin-bottom: -24px;
     font-family: Pokemon;
     font-size: 48px;
@@ -50,6 +55,7 @@ header h1 {
 header h1 img {
     width: 56px;
     margin-right: -8px;
+    align-self: baseline;
     filter: brightness(0.9) grayscale(0.2);
 }
 
@@ -64,7 +70,7 @@ header h1:hover {
 .search_div {
     height: 40px;
     max-width: 480px;
-    padding-left: 48px;
+    padding-left: 120px;
     flex: 1;
 }
 
@@ -75,6 +81,8 @@ header h1:hover {
     padding: 4px 8px 4px 8px;
     flex: 1;
     border: none;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
     background-color: rgb(219, 221, 224);
     font-family: Roboto;
     font-size: 18px;
@@ -98,10 +106,11 @@ header h1:hover {
 
 #searchSubmit {
     height: 40px;
-    width: 40px;
     margin: 0;
     padding: 2px;
     border: none;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
     background-color: rgb(219, 221, 224);
     color: rgb(50, 50, 50);
     cursor: pointer;
@@ -119,7 +128,6 @@ header h1:hover {
 
 
 main {
-    padding-top: 80px;
     flex: 1;
     flex-direction: column;
 }
@@ -146,7 +154,7 @@ main {
 
 
 #pokedex {
-    margin-top: 32px;
+    margin-top: 112px;
     flex-direction: row;
     flex-wrap: wrap;
     z-index: 1;
@@ -226,7 +234,8 @@ footer {
 }
 
 
-footer div {
+.footer_content {
+    width: 100%;
     padding-top: 32px;
     padding-bottom: 32px;
     display: flex;
