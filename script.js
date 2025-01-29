@@ -6,6 +6,8 @@ let initPkms = [];
 
 
 async function init() {
+    offset = 0;
+    document.getElementById("loadMorePkm").classList.remove("d_none");
     clearPokedex();
     openLoadingScreen();
     await fetchinitPkmsUrls();
@@ -313,6 +315,7 @@ function clearPokedex() {
 
 async function searchPkmName() {
     clearPokedex();
+    document.getElementById("loadMorePkm").classList.add("d_none");
     let searchInput = document.getElementById('searchInput').value;
     if (searchInput.length >= 3) {
         openLoadingScreen();
