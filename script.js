@@ -8,7 +8,7 @@ let initPkms = [];
 async function init() {
     clearPokedex();
     openLoadingScreen();
-    await loadinitPkmsUrls();
+    await fetchinitPkmsUrls();
     await closeLoadingScreen();
 }
 
@@ -27,7 +27,7 @@ async function closeLoadingScreen() {
 }
 
 
-async function loadinitPkmsUrls() {
+async function fetchinitPkmsUrls() {
     let pokeApi = await fetch(BASE_URL);
     let pokeApiData = await pokeApi.json();
     initPkmsUrls = pokeApiData.results;
@@ -299,62 +299,37 @@ function clearPokedex() {
 
 
 async function searchPkmName() {
-    let searchInput = document.getElementById('searchInput').value;
     clearPokedex();
+    let searchInput = document.getElementById('searchInput').value;
     if (searchInput.length >= 3) {
-        // openLoadingScreen();
-        await filterPkmNames(searchInput);
-        // await closeLoadingScreen();
+        openLoadingScreen();
+        await fetchTotalPkms(searchInput);
+        await closeLoadingScreen();
     }
 }
 
 
-async function filterPkmNames(searchInput) {
+async function fetchTotalPkms(searchInput) {
     let TOTAL_PKM_URL = "https://pokeapi.co/api/v2/pokemon?offset=0&limit=1304";
     let pokeApi = await fetch(TOTAL_PKM_URL);
     let pokeApiData = await pokeApi.json();
-    //console.log(pokeApiData.results);
-    let filteredPkmNames = checkLetters(pokeApiData, searchInput);
-    //console.log(filteredPkmNames);
+    let pokeApiResults = pokeApiData.results;
+    let totalPkmNames = [];
+    findFilteredPkmNames(pokeApiResults, totalPkmNames, searchInput);
 }
 
 
-async function checkLetters(pokeApiData, searchInput) {
-    pokeApiResults = pokeApiData.results;
-    //console.log(pokeApiResults);
-
-    for (let indexinitPkms = 0; indexinitPkms < pokeApiResults.length; indexinitPkms++) {
-        if (searchInput == pokeApiResults[indexinitPkms].name) {
-            initPkmsUrls.push(pokeApiResults[indexinitPkms]);
-            console.log(initPkmsUrls);
-            loadinitPkmks();
-        }
+function findFilteredPkmNames(pokeApiResults, totalPkmNames, searchInput) {
+    for (let indexTotalPkms = 0; indexTotalPkms < pokeApiResults.length; indexTotalPkms++) {
+        totalPkmNames.push(pokeApiResults[indexTotalPkms].name)
     }
+
+    let searchResults = totalPkmNames.filter(name => name.includes(searchInput));
+
+    for (let indexFilteredPkms = 0; indexFilteredPkms < searchResults.length; indexFilteredPkms++) {
+        let indexSearchResultPkm = totalPkmNames.indexOf(searchResults[indexFilteredPkms]);
+        initPkmsUrls.push(pokeApiResults[indexSearchResultPkm]);
+    }
+    
+    loadinitPkmks();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // let filteredPkmArray = pokeApiResults.filter(myfunc);
-    // function myfunc(searchInput) {
-    //     pokeApiResults.name == searchInput;
-    // };
-    // console.log(filteredPkmArray);
-
-
-
-    // for (let indexTotalPkm = 0; indexTotalPkm < pokeApiData.results.length; indexTotalPkm++) {
-    //     let pokeApiNames = pokeApiData.results[indexTotalPkm].name;
-    //     let searchInputIncluded = pokeApiNames.includes(searchInput);
-    //     console.log(searchInputIncluded);
-    // }
-    //return ;
