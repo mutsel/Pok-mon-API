@@ -51,6 +51,14 @@
         width: 72px;
     }
 
+    footer {
+        min-height: 104px;
+    }
+
+    .footer_content {
+        font-size: 14px;
+    }
+
     .pkm_card {
         height: 224px;
         width: 224px;
@@ -198,4 +206,583 @@
 }
 
 
-@media (max-width: 0) {}
+@media (max-width: 1100px) {
+    .resp_padding {
+        padding-left: 80px;
+        padding-right: 80px;
+    }
+
+    header h1 {
+        font-size: 36px;
+    }
+
+    header h1 img {
+        width: 48px;
+        margin-right: -6px;
+    }
+
+    .search_div {
+        max-width: 360px;
+    }
+
+    #loadMorePkm img {
+        height: 80px;
+    }
+
+    #backToTop {
+        height: 72px;
+        width: 72px;
+    }
+
+    .pkm_card {
+        height: 192px;
+        width: 192px;
+        margin: 18px;
+        margin-bottom: 64px;
+    }
+
+    .pkm_card_content {
+        height: 168px;
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .pkm_card_img {
+        margin-top: 20px;
+        min-height: 120px;
+    }
+
+    .pkm_card_id {
+        font-size: 16px;
+    }
+
+    .pkm_card_name {
+        font-size: 18px;
+    }
+
+    .pkm_card_types div {
+        font-size: 16px;
+    }
+}
+
+
+@media (max-width: 900px) {
+    .resp_padding {
+        padding-left: 72px;
+        padding-right: 72px;
+    }
+
+    header h1 {
+        font-size: 32px;
+        letter-spacing: 4px;
+    }
+
+    header h1 img {
+        width: 40px;
+    }
+
+    .search_div {
+        padding-left: 80px;
+    }
+
+    #searchInput {
+        padding: 2px 6px 2px 6px;
+        border-top-left-radius: 6px;
+        border-bottom-left-radius: 6px;
+        font-size: 14px;
+        letter-spacing: 0;
+    }
+
+    #searchSubmit {
+        border-top-right-radius: 6px;
+        border-bottom-right-radius: 6px;
+    }
+
+    #loadMorePkm img {
+        height: 64px;
+    }
+
+    #backToTop {
+        height: 64px;
+        width: 64px;
+    }
+
+    .pkm_card {
+        height: 168px;
+        width: 168px;
+        margin: 12px;
+        margin-bottom: 56px;
+    }
+
+    .pkm_card_content {
+        height: 152px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .pkm_card_img {
+        margin-top: 36px;
+        min-height: 104px;
+    }
+
+    .pkm_card_id {
+        font-size: 16px;
+    }
+
+    .pkm_card_name {
+        font-size: 18px;
+    }
+
+    .pkm_card_types div {
+        padding: 4px 1px 4px 1px;
+        border-width: 2px;
+    }
+
+    #currentPkmCard {
+        width: 435px;
+        height: 700px;
+        border-radius: 24px;
+        border-width: 8px;
+    }
+
+    #currentPkmCardOverview {
+        padding-bottom: 6px;
+    }
+
+    #currentPkmTitle {
+        height: 48px;
+    }
+
+    #currentPkmId {
+        padding-left: 8px;
+        font-size: 18px;
+    }
+
+    #currentPkmName {
+        top: -18px;
+        font-size: 24px;
+    }
+
+    #closeCurrentPkm {
+        padding-right: 8px;
+    }
+
+    #currentPkmFrame {
+        height: 280px;
+    }
+
+    .arrow {
+        width: 24px;
+        height: 104px;
+        padding: 0 4px 0 4px;
+    }
+
+    #currentPkmImg {
+        transform: scale(80%);
+    }
+
+    .current_pkm_navbar {
+        height: 32px;
+        margin: 4px 16px 0 16px;
+    }
+
+    .current_pkm_navbar button {
+        font-size: 18px;
+    }
+
+    .current_pkm_navbar button:hover {
+        transform: scale(112%);
+        text-underline-offset: 8px;
+        text-decoration-thickness: 3px;
+    }
+
+    #currentPkmCardContent {
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+    }
+
+    #currentPkmInfo {
+        max-height: 320px;
+    }
+
+    .info_category {
+        font-size: 18px;
+    }
+
+    .section_about {
+        padding: 32px 28px 0 28px;
+        gap: 28px;
+    }
+
+    #typesIcons img {
+        height: 20px;
+        width: 20px;
+        margin: 0 4px 0 4px;
+        padding: 16px;
+    }
+
+    .section_stats {
+        padding: 36px 28px 0 28px;
+        gap: 24px;
+    }
+
+    .progress_bar {
+        height: 18px;
+        max-width: 255px;
+        margin-left: 20px;
+        border-radius: 14px;
+    }
+
+    .progress_bar div {
+        border-radius: 14px;
+    }
+
+    .section_evoluion {
+        height: 320px;
+        gap: 16px;
+    }
+
+    .evolution_img {
+        height: 80px;
+        width: 80px;
+    }
+
+    .evolution_arrow {
+        height: 40px;
+        width: 18px;
+    }
+
+    .section_sound {
+        height: 320px;
+        font-size: 14px;
+    }
+
+    #currentPkmImgSound {
+        height: 160px;
+        width: 160px;
+        padding-bottom: 28px;
+    }
+}
+
+
+@media (max-width: 760px) {
+    .resp_padding {
+        padding-left: 56px;
+        padding-right: 56px;
+    }
+
+    .header_content {
+        padding-top: 16px;
+        padding-bottom: 16px;
+        flex-direction: column;
+        justify-content: center;
+        gap: 16px;
+    }
+
+    header h1 {
+        font-size: 28px;
+        letter-spacing: 3px;
+        align-self: start;
+    }
+
+    header h1 img {
+        width: 32px;
+        margin-right: -2px;
+    }
+
+    .search_div {
+        min-width: 230px;
+        height: 24px;
+        padding-left: 0;
+        align-self: end;
+    }
+
+    #searchInput {
+        padding: 4px 4px 3px 4px;
+    }
+
+    #searchSubmit {
+        height: 24px;
+    }
+
+    #loadMorePkm img {
+        width: 30%;
+        height: 48px;
+    }
+
+    #backToTop {
+        height: 56px;
+        width: 56px;
+    }
+
+    footer {
+        min-height: 96px;
+    }
+
+    .footer_content {
+        font-size: 12px;
+    }
+
+    .pkm_card {
+        height: 144px;
+        width: 144px;
+        margin: 10px;
+        margin-bottom: 48px;
+    }
+
+    .pkm_card_content {
+        height: 128px;
+        padding-left: 2px;
+        padding-right: 2px;
+        border-width: 2px;
+    }
+
+    .pkm_card_img {
+        margin-top: 48px;
+        min-height: 88px;
+    }
+
+    .pkm_card_id {
+        margin-top: 12px;
+        font-size: 14px;
+    }
+
+    .pkm_card_name {
+        font-size: 16px;
+    }
+
+    .pkm_card_types {
+        margin-top: 6px;
+    }
+
+    .pkm_card_types div {
+        padding: 3px 0 3px 0;
+        font-size: 14px;
+    }
+}
+
+
+@media (max-width: 620px) {
+    .resp_padding {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+
+    .header_content {
+        gap: 32px;
+    }
+
+    #overlayLoadingScreen {
+        font-size: 18px;
+    }
+
+    #overlayLoadingScreen img {
+        height: 176px;
+        width: 176px;
+    }
+
+    #backToTop {
+        height: 40px;
+        width: 40px;
+    }
+
+    #currentPkmCard {
+        width: 300px;
+        height: 480px;
+        border-radius: 20px;
+        border-width: 6px;
+    }
+
+    #currentPkmCardOverview {
+        padding-bottom: 2px;
+    }
+
+    #currentPkmTitle {
+        height: 32px;
+    }
+
+    #currentPkmId {
+        padding-left: 4px;
+        font-size: 14px;
+    }
+
+    #currentPkmName {
+        top: -20px;
+        font-size: 22px;
+    }
+
+    #closeCurrentPkm {
+        padding-right: 4px;
+        transform: scale(80%);
+    }
+
+    #currentPkmFrame {
+        height: 200px;
+    }
+
+    .arrow {
+        width: 20px;
+        height: 80px;
+        padding: 0 2px 0 2px;
+    }
+
+    #currentPkmImg {
+        transform: scale(64%);
+    }
+
+    .current_pkm_navbar {
+        height: 28px;
+        margin: 2px 12px 0 12px;
+    }
+
+    .current_pkm_navbar button {
+        font-size: 16px;
+    }
+
+    .current_pkm_navbar button:hover {
+        transform: scale(112%);
+        text-underline-offset: 6px;
+        text-decoration-thickness: 2px;
+    }
+
+    #currentPkmCardContent {
+        border-top-left-radius: 14px;
+        border-top-right-radius: 14px;
+    }
+
+    #currentPkmInfo {
+        max-height: 208px;
+    }
+
+    .info_category {
+        font-size: 14px;
+    }
+
+    .section_about {
+        padding: 20px 16px 0 16px;
+        gap: 16px;
+    }
+
+    #typesIcons img {
+        height: 16px;
+        width: 16px;
+        margin: 0 2px 0 2px;
+        padding: 12px;
+    }
+
+    .section_stats {
+        padding: 18px 14px 0 14px;
+        gap: 16px;
+    }
+
+    .progress_bar {
+        height: 12px;
+        max-width: 255px;
+        margin-left: 8px;
+        border-radius: 6px;
+    }
+
+    .progress_bar div {
+        border-radius: 6px;
+    }
+
+    .section_evoluion {
+        height: 208px;
+        gap: 8px;
+    }
+
+    .evolution_img {
+        height: 64px;
+        width: 64px;
+    }
+
+    .evolution_arrow {
+        height: 32px;
+        width: 12px;
+    }
+
+    .section_sound {
+        height: 208px;
+        font-size: 12px;
+    }
+
+    #currentPkmImgSound {
+        height: 104px;
+        width: 104px;
+        padding-bottom: 20px;
+    }
+}
+
+
+@media (max-width: 380px) {
+    .resp_padding {
+        padding-left: 22px;
+        padding-right: 22px;
+    }
+
+    .header_content {
+        padding-top: 20px;
+        gap: 20px;
+    }
+
+    header h1 {
+        margin-top: -24px;
+        margin-bottom: -12px;
+        font-size: 22px;
+        -webkit-text-stroke: 1.5px rgb(72, 102, 190);
+    }
+
+    header h1 img {
+        width: 24px;
+        margin-right: 0;
+    }
+
+    .search_div {
+        min-width: 230px;
+        height: 22px;
+    }
+
+    #searchInput {
+        padding: 3px 4px 2px 4px;
+    }
+
+    #searchSubmit {
+        height: 22px;
+    }
+
+    .pkm_card {
+        height: 128px;
+        width: 128px;
+        margin: 8px;
+        margin-bottom: 40px;
+    }
+
+    .pkm_card_content {
+        height: 120px;
+        border-width: 1px;
+    }
+
+    .pkm_card_img {
+        margin-top: 64px;
+        min-height: 72px;
+    }
+
+    .pkm_card_id {
+        margin-top: 10px;
+        font-size: 12px;
+    }
+
+    .pkm_card_name {
+        margin-top: 2px;
+        font-size: 14px;
+    }
+
+    .pkm_card_types {
+        margin-top: 8px;
+    }
+
+    .pkm_card_types div {
+        padding: 3px 0 3px 0;
+        font-size: 12px;
+    }
+}
