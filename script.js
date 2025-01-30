@@ -2,8 +2,8 @@ const BASE_URL = "https://pokeapi.co/api/v2/pokemon/?offset=0&limit=20";
 const TOTAL_PKM_URL = "https://pokeapi.co/api/v2/pokemon?offset=0&limit=1304";
 let offset = 0;
 
-let initPkmsUrls = [];
-let initPkms = [];
+let pkmsUrls = [];
+let pkms = [];
 
 
 async function init() {
@@ -17,14 +17,14 @@ async function init() {
 
 
 function openLoadingScreen() {
-    let overlayContentRef = document.getElementById("overlayLoadingScreen");
+    const overlayContentRef = document.getElementById("overlayLoadingScreen");
     overlayContentRef.classList.remove("d_none");
     document.getElementById("body").classList.add("attach_bg");
 }
 
 
 async function closeLoadingScreen() {
-    let overlayContentRef = document.getElementById("overlayLoadingScreen")
+    const overlayContentRef = document.getElementById("overlayLoadingScreen")
     overlayContentRef.classList.add("d_none");
     document.getElementById("body").classList.remove("attach_bg");
 }
@@ -33,54 +33,54 @@ async function closeLoadingScreen() {
 async function fetchinitPkmsUrls() {
     let pokeApi = await fetch(BASE_URL);
     let pokeApiData = await pokeApi.json();
-    initPkmsUrls = pokeApiData.results;
+    PkmsUrls = pokeApiData.results;
     await loadinitPkmks();
 }
 
 
 async function loadinitPkmks() {
-    for (let indexinitPkms = 0; indexinitPkms < initPkmsUrls.length; indexinitPkms++) {
-        let PKM_URL = initPkmsUrls[indexinitPkms].url;
+    for (let indexPkms = 0; indexPkms < PkmsUrls.length; indexPkms++) {
+        let PKM_URL = PkmsUrls[indexPkms].url;
         let pkmDataApi = await fetch(PKM_URL);
-        let initPkmsEntrie = await pkmDataApi.json();
-        initPkms.push(initPkmsEntrie);
-        document.getElementById("pokedex").innerHTML += getPkmCardTemplate(indexinitPkms);
-        if (initPkms[indexinitPkms].sprites.other.dream_world.front_default == null) {
-            contentRef = document.getElementById("pkmImg" + initPkms[indexinitPkms].id);
-            alternativeImg(contentRef, indexinitPkms);
+        let pkmsEntrie = await pkmDataApi.json();
+        pkms.push(pkmsEntrie);
+        document.getElementById("pokedex").innerHTML += getPkmCardTemplate(indexPkms);
+        if (pkms[indexPkms].sprites.other.dream_world.front_default == null) {
+            const contentRef = document.getElementById("pkmImg" + pkms[indexPkms].id);
+            alternativeImg(contentRef, indexPkms);
         }
-        await loadPkmsTypes(indexinitPkms);
+        await loadPkmsTypes(indexPkms);
     }
 }
 
 
-function PkmIdThreeDigits(PkmId) {
+function pkmIdThreeDigits(PkmId) {
     let PkmIdString = PkmId.toString();
     let PkmIdFixed = PkmIdString.padStart(3, '0');
     return `${PkmIdFixed}`;
 }
 
 
-async function loadPkmsTypes(indexinitPkms) {
-    for (let indexPkmType = 0; indexPkmType < initPkms[indexinitPkms].types.length; indexPkmType++) {
-        document.getElementById("pkm_card_types_" + initPkms[indexinitPkms].id).innerHTML += getPkmTypesNameTemplate(indexinitPkms, indexPkmType);
+async function loadPkmsTypes(indexPkms) {
+    for (let indexPkmType = 0; indexPkmType < pkms[indexPkms].types.length; indexPkmType++) {
+        document.getElementById("pkm_card_types_" + pkms[indexPkms].id).innerHTML += getPkmTypesNameTemplate(indexPkms, indexPkmType);
     }
-    let firstType = initPkms[indexinitPkms].types[0].type.name;
-    document.getElementById("pkm_" + initPkms[indexinitPkms].id).style.backgroundImage = "url('./assets/icons/" + firstType + ".svg')";
+    let firstType = pkms[indexPkms].types[0].type.name;
+    document.getElementById("pkm_" + pkms[indexPkms].id).style.backgroundImage = "url('./assets/icons_pkm_types/" + firstType + ".svg')";
 }
 
 
-function alternativeImg(contentRef, indexinitPkms) {
-    contentRef.src = initPkms[indexinitPkms].sprites.other.home.front_default;
+function alternativeImg(contentRef, indexPkms) {
+    contentRef.src = pkms[indexPkms].sprites.other.home.front_default;
 }
 
 
-function renderCurrentPkmCard(indexinitPkms) {
-    let contentRef = document.getElementById("currentPkmCard");
+function renderCurrentPkmCard(indexPkms) {
+    const contentRef = document.getElementById("currentPkmCard");
     contentRef.innerHTML = "";
-    contentRef.innerHTML += getCurrentPkmCardTemplate(indexinitPkms);
+    contentRef.innerHTML += getCurrentPkmCardTemplate(indexPkms);
     toggleOverlayPkmCard();
-    loadContentCurrentPkmCard(indexinitPkms);
+    loadContentCurrentPkmCard(indexPkms);
 }
 
 
@@ -91,72 +91,73 @@ function toggleOverlayPkmCard() {
 }
 
 
-function loadContentCurrentPkmCard(indexinitPkms) {
-    changeBgCurrentPkmCard(indexinitPkms);
-    PkmId = indexinitPkms + 1;
-    document.getElementById("currentPkmId").innerHTML = "#" + PkmIdThreeDigits(PkmId);
-    document.getElementById("currentPkmName").innerHTML = initPkms[indexinitPkms].name.charAt(0).toUpperCase() + initPkms[indexinitPkms].name.slice(1);
-    document.getElementById("currentPkmImg").src = initPkms[indexinitPkms].sprites.other.dream_world.front_default;
-    if (initPkms[indexinitPkms].sprites.other.dream_world.front_default == null) {
-        contentRef = document.getElementById("currentPkmImg");
-        alternativeImg(contentRef, indexinitPkms);
+function loadContentCurrentPkmCard(indexPkms) {
+    changeBgCurrentPkmCard(indexPkms);
+    PkmId = indexPkms + 1;
+    document.getElementById("currentPkmId").innerHTML = "#" + pkmIdThreeDigits(PkmId);
+    document.getElementById("currentPkmName").innerHTML = pkms[indexPkms].name.charAt(0).toUpperCase() + pkms[indexPkms].name.slice(1);
+    document.getElementById("currentPkmImg").src = pkms[indexPkms].sprites.other.dream_world.front_default;
+    if (pkms[indexPkms].sprites.other.dream_world.front_default == null) {
+        const contentRef = document.getElementById("currentPkmImg");
+        alternativeImg(contentRef, indexPkms);
     }
-    loadCurrentPkmInfoCategory("", indexinitPkms);
+    loadCurrentPkmInfoCategory("", indexPkms);
 }
 
 
-function changeBgCurrentPkmCard(indexinitPkms) {
-    let firstType = initPkms[indexinitPkms].types[0].type.name;
+function changeBgCurrentPkmCard(indexPkms) {
+    let firstType = pkms[indexPkms].types[0].type.name;
     let cssClassFirstType = document.querySelector("." + firstType);
     let currentBgColor = getComputedStyle(cssClassFirstType).borderColor;
     document.getElementById("currentPkmCard").style.backgroundColor = currentBgColor;
 }
 
 
-async function loadCurrentPkmInfoCategory(clickedBtn, indexinitPkms) {
-    let contentRef = document.getElementById("currentPkmInfo");
+async function loadCurrentPkmInfoCategory(clickedBtn, indePkms) {
+    const contentRef = document.getElementById("currentPkmInfo");
     contentRef.innerHTML = "";
     let currentCategory = clickedBtn;
     switch (currentCategory) {
         default:
         case 'About':
-            contentRef.innerHTML += getSectionAboutTemplate(indexinitPkms);
-            loadCurrentTypes(indexinitPkms);
-            loadCurrentAbilities(indexinitPkms);
+            contentRef.innerHTML += getSectionAboutTemplate(indePkms);
+            loadCurrentTypes(indePkms);
+            loadCurrentAbilities(indePkms);
             break;
         case 'Stats':
-            contentRef.innerHTML += getSectionStatsTemplate(indexinitPkms);
+            contentRef.innerHTML += getSectionStatsTemplate(indePkms);
             break;
         case 'Evolution':
-            let evoChainIndexArray = await loadCurrentEvoChain(indexinitPkms);
+            let evoChainIndexArray = await loadCurrentEvoChain(indePkms);
             contentRef.innerHTML += getEvolutionTemplate();
             await loadCurrentEvoChainPkmImgs(evoChainIndexArray);
+            removeLastArrow();
             break;
         case 'Sound':
-            contentRef.innerHTML += getSectionSoundTemplate(indexinitPkms);
+            contentRef.innerHTML += getSectionSoundTemplate(indePkms);
             break;
     }
 }
 
 
-function loadCurrentTypes(indexinitPkms) {
-    for (let indexPkmType = 0; indexPkmType < initPkms[indexinitPkms].types.length; indexPkmType++) {
-        document.getElementById("typesIcons").innerHTML += getPkmTypesImg(indexinitPkms, indexPkmType);
+function loadCurrentTypes(indexPkms) {
+    for (let indexPkmType = 0; indexPkmType < pkms[indexPkms].types.length; indexPkmType++) {
+        document.getElementById("typesIcons").innerHTML += getPkmTypesImg(indexPkms, indexPkmType);
     }
 }
 
 
-function loadCurrentAbilities(indexinitPkms) {
-    let contentRef = document.getElementById("currentAbilities");
-    for (let indexPkmAbility = 0; indexPkmAbility < initPkms[indexinitPkms].abilities.length; indexPkmAbility++) {
-        contentRef.innerHTML += initPkms[indexinitPkms].abilities[indexPkmAbility].ability.name + ", ";
+function loadCurrentAbilities(indexPkms) {
+    const contentRef = document.getElementById("currentAbilities");
+    for (let indexPkmAbility = 0; indexPkmAbility < pkms[indexPkms].abilities.length; indexPkmAbility++) {
+        contentRef.innerHTML += pkms[indexPkms].abilities[indexPkmAbility].ability.name + ", ";
     }
     contentRef.innerHTML = contentRef.innerHTML.slice(0, -2);
 }
 
 
-async function loadCurrentEvoChain(indexinitPkms) {
-    let PkmId = indexinitPkms + 1;
+async function loadCurrentEvoChain(indexPkms) {
+    let PkmId = indexPkms + 1;
     let PKM_SPECIES_URL = "https://pokeapi.co/api/v2/pokemon-species/" + PkmId;
     let pokeApi = await fetch(PKM_SPECIES_URL);
     let pokeApiData = await pokeApi.json();
@@ -207,47 +208,51 @@ function loadEvoChainSecondEvo(pokeApiData) {
 
 
 async function loadCurrentEvoChainPkmImgs(evoChainIndexArray) {
-    let evoChainContentRef = document.getElementById("evoChainImgs");
+    const evoChainContentRef = document.getElementById("evoChainImgs");
     for (let indexEvoChain = 0; indexEvoChain < evoChainIndexArray.length; indexEvoChain++) {
         if (evoChainIndexArray[indexEvoChain] !== -1) {
             evoChainContentRef.innerHTML += getEvoChainPkmImgsTemplate(evoChainIndexArray, indexEvoChain);
-            if (initPkms[evoChainIndexArray[indexEvoChain]].sprites.other.dream_world.front_default == null) {
-                contentRef = document.getElementById("evolutionPkm" + indexEvoChain);
-                let indexinitPkms = indexEvoChain;
-                alternativeImg(contentRef, indexinitPkms);
+            if (pkms[evoChainIndexArray[indexEvoChain]].sprites.other.dream_world.front_default == null) {
+                const contentRef = document.getElementById("evolutionPkm" + indexEvoChain);
+                let indexPkms = indexEvoChain;
+                alternativeImg(contentRef, indexPkms);
             }
         }
     }
-    let arrowToRemove = document.getElementById("evoChainImgs").lastChild;
-    arrowToRemove = arrowToRemove.remove();
 }
 
 
-function playPkmSound(indexinitPkms) {
-    let audioPkmSound = new Audio(initPkms[indexinitPkms].cries.latest);
+async function removeLastArrow() {
+    let arrowToRemove = document.getElementById("evoChainImgs").lastChild;
+    arrowToRemove.remove();
+}
+
+
+function playPkmSound(indexPkms) {
+    let audioPkmSound = new Audio(pkms[indexPkms].cries.latest);
     audioPkmSound.volume = 0.1;
     audioPkmSound.play();
 }
 
 
-function lastPkmCard(indexinitPkms) {
-    if (indexinitPkms > 0) {
-        indexinitPkms--;
-        let contentRef = document.getElementById("currentPkmCard");
+function lastPkmCard(indexPkms) {
+    if (indexPkms > 0) {
+        indexPkms--;
+        const contentRef = document.getElementById("currentPkmCard");
         contentRef.innerHTML = "";
-        contentRef.innerHTML += getCurrentPkmCardTemplate(indexinitPkms);
-        loadContentCurrentPkmCard(indexinitPkms);
+        contentRef.innerHTML += getCurrentPkmCardTemplate(indexPkms);
+        loadContentCurrentPkmCard(indexPkms);
     }
 }
 
 
-function nextPkmCard(indexinitPkms) {
-    if (indexinitPkms + 1 < initPkms.length) {
-        indexinitPkms++;
-        let contentRef = document.getElementById("currentPkmCard");
+function nextPkmCard(indexPkms) {
+    if (indexPkms + 1 < pkms.length) {
+        indexPkms++;
+        const contentRef = document.getElementById("currentPkmCard");
         contentRef.innerHTML = "";
-        contentRef.innerHTML += getCurrentPkmCardTemplate(indexinitPkms);
-        loadContentCurrentPkmCard(indexinitPkms);
+        contentRef.innerHTML += getCurrentPkmCardTemplate(indexPkms);
+        loadContentCurrentPkmCard(indexPkms);
     }
 }
 
@@ -265,30 +270,30 @@ async function fetchNextPkms(NEXT_URL) {
     let pokeApi = await fetch(NEXT_URL);
     let pokeApiData = await pokeApi.json();
     let nextPkmsUrls = pokeApiData.results;
-    for (let indexinitPkms = 0; indexinitPkms < 20; indexinitPkms++) {
-        initPkmsUrls.push(nextPkmsUrls[indexinitPkms]);
+    for (let indexPkms = 0; indexPkms < 20; indexPkms++) {
+        pkmsUrls.push(nextPkmsUrls[indexPkms]);
     }
     await loadNextPkmks();
 }
 
 
 async function loadNextPkmks() {
-    for (let indexinitPkms = offset; indexinitPkms < offset + 20; indexinitPkms++) {
-        let PKM_URL = initPkmsUrls[indexinitPkms].url;
+    for (let indexPkms = offset; indexPkms < offset + 20; indexPkms++) {
+        let PKM_URL = pkmsUrls[indexPkms].url;
         let pkmDataApi = await fetch(PKM_URL);
-        let initPkmsEntrie = await pkmDataApi.json();
-        initPkms.push(initPkmsEntrie);
-        document.getElementById("pokedex").innerHTML += getPkmCardTemplate(indexinitPkms);
-        await loadPkmsTypes(indexinitPkms);
+        let PkmsEntrie = await pkmDataApi.json();
+        pkms.push(PkmsEntrie);
+        document.getElementById("pokedex").innerHTML += getPkmCardTemplate(indexPkms);
+        await loadPkmsTypes(indexPkms);
     }
 }
 
 
 function clearPokedex() {
-    let contentRef = document.getElementById("pokedex");
+    const contentRef = document.getElementById("pokedex");
     contentRef.innerHTML = "";
-    initPkmsUrls = [];
-    initPkms = [];
+    PkmsUrls = [];
+    Pkms = [];
 }
 
 
@@ -320,7 +325,7 @@ function findFilteredPkmNames(pokeApiResults, totalPkmNames, searchInput) {
     let searchResults = totalPkmNames.filter(name => name.includes(searchInput));
     for (let indexFilteredPkms = 0; indexFilteredPkms < searchResults.length; indexFilteredPkms++) {
         let indexSearchResultPkm = totalPkmNames.indexOf(searchResults[indexFilteredPkms]);
-        initPkmsUrls.push(pokeApiResults[indexSearchResultPkm]);
+        pkmsUrls.push(pokeApiResults[indexSearchResultPkm]);
     }
     loadinitPkmks();
 }
