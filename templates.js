@@ -24,9 +24,9 @@ function getCurrentPkmCardTemplate(indexPkms) {
                     <button onclick="toggleOverlayPkmCard()" id="closeCurrentPkm" class="display_flex_centered"><img src="./assets/icons_other/close_btn.svg"></button>
                 </div>
                 <div id="currentPkmFrame">
-                    <img class="arrow" onclick="lastPkmCard(${indexPkms})" src="./assets/icons_other/arrow_left.png">
+                    <img id="lastArrow" class="arrow" onclick="lastPkmCard(${indexPkms})" src="./assets/icons_other/arrow_left.png">
                     <img id="currentPkmImg" src="">
-                    <img class="arrow" onclick="nextPkmCard(${indexPkms})" src="./assets/icons_other/arrow_right.png">
+                    <img id="nextArrow" class="arrow" onclick="nextPkmCard(${indexPkms})" src="./assets/icons_other/arrow_right.png">
                 </div>
             </div>
             <div id="currentPkmCardContent">

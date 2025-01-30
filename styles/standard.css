@@ -15,6 +15,11 @@
 }
 
 
+.visibility_hidden {
+    visibility: hidden;
+}
+
+
 .display_flex_centered {
     display: flex;
     justify-content: center;

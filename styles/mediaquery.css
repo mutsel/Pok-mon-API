@@ -786,3 +786,382 @@
         font-size: 12px;
     }
 }
+
+
+@media (max-height: 1200px) {
+    #currentPkmCard {
+        width: 500px;
+        height: 800px;
+        top: 5%;
+        border-radius: 28px;
+        border-width: 12px;
+    }
+
+    #currentPkmCardOverview {
+        padding-bottom: 8px;
+    }
+
+    #currentPkmTitle {
+        height: 56px;
+    }
+
+    #currentPkmId {
+        width: 10%;
+        padding-left: 12px;
+        font-size: 20px;
+    }
+
+    #currentPkmName {
+        top: -18px;
+        font-size: 28px;
+    }
+
+    #closeCurrentPkm {
+        padding-right: 12px;
+    }
+
+    #currentPkmFrame {
+        height: 304px;
+    }
+
+    .arrow {
+        width: 24px;
+        height: 120px;
+        padding: 0 6px 0 6px;
+    }
+
+    #currentPkmImg {
+        transform: scale(88%);
+    }
+
+    .current_pkm_navbar {
+        height: 36px;
+        margin: 6px 20px 0 20px;
+    }
+
+    .current_pkm_navbar button {
+        font-size: 20px;
+    }
+
+    #currentPkmCardContent {
+        border-top-left-radius: 24px;
+        border-top-right-radius: 24px;
+    }
+
+    #currentPkmInfo {
+        max-height: 384px;
+    }
+
+    .info_category {
+        font-size: 20px;
+    }
+
+    .section_about {
+        padding: 48px 32px 0 32px;
+        gap: 32px;
+    }
+
+    #typesIcons img {
+        height: 24px;
+        width: 24px;
+        margin: 0 6px 0 6px;
+        padding: 20px;
+    }
+
+    .section_stats {
+        padding: 48px 32px 0 32px;
+        gap: 28px;
+    }
+
+    .section_evoluion {
+        width: 100%;
+        height: 384px;
+        gap: 20px;
+    }
+
+    .evolution_img {
+        height: 96px;
+        width: 96px;
+    }
+
+    .evolution_arrow {
+        height: 56px;
+        width: 24px;
+    }
+
+    .section_sound {
+        height: 384px;
+    }
+
+    #currentPkmImgSound {
+        height: 200px;
+        width: 200px;
+        padding-bottom: 32px;
+    }
+}
+
+
+@media (max-height: 900px) {
+    #currentPkmCard {
+        width: 435px;
+        height: 700px;
+        top: 5%;
+        border-radius: 24px;
+        border-width: 8px;
+    }
+
+    #currentPkmCardOverview {
+        padding-bottom: 6px;
+    }
+
+    #currentPkmTitle {
+        height: 48px;
+    }
+
+    #currentPkmId {
+        padding-left: 8px;
+        font-size: 18px;
+    }
+
+    #currentPkmName {
+        top: -18px;
+        font-size: 24px;
+    }
+
+    #closeCurrentPkm {
+        padding-right: 8px;
+    }
+
+    #currentPkmFrame {
+        height: 280px;
+    }
+
+    .arrow {
+        width: 24px;
+        height: 104px;
+        padding: 0 4px 0 4px;
+    }
+
+    #currentPkmImg {
+        transform: scale(80%);
+    }
+
+    .current_pkm_navbar {
+        height: 32px;
+        margin: 4px 16px 0 16px;
+    }
+
+    .current_pkm_navbar button {
+        font-size: 18px;
+    }
+
+    .current_pkm_navbar button:hover {
+        transform: scale(112%);
+        text-underline-offset: 8px;
+        text-decoration-thickness: 3px;
+    }
+
+    #currentPkmCardContent {
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+    }
+
+    #currentPkmInfo {
+        max-height: 320px;
+    }
+
+    .info_category {
+        font-size: 18px;
+    }
+
+    .section_about {
+        padding: 32px 28px 0 28px;
+        gap: 28px;
+    }
+
+    #typesIcons img {
+        height: 20px;
+        width: 20px;
+        margin: 0 4px 0 4px;
+        padding: 16px;
+    }
+
+    .section_stats {
+        padding: 36px 28px 0 28px;
+        gap: 24px;
+    }
+
+    .progress_bar {
+        height: 18px;
+        max-width: 255px;
+        margin-left: 20px;
+        border-radius: 14px;
+    }
+
+    .progress_bar div {
+        border-radius: 14px;
+    }
+
+    .section_evoluion {
+        height: 320px;
+        gap: 16px;
+    }
+
+    .evolution_img {
+        height: 80px;
+        width: 80px;
+    }
+
+    .evolution_arrow {
+        height: 40px;
+        width: 18px;
+    }
+
+    .section_sound {
+        height: 320px;
+        font-size: 14px;
+    }
+
+    #currentPkmImgSound {
+        height: 160px;
+        width: 160px;
+        padding-bottom: 28px;
+    }
+}
+
+
+@media (max-height: 800px) {
+    #currentPkmCard {
+        width: 300px;
+        height: 480px;
+        top: 5%;
+        border-radius: 20px;
+        border-width: 6px;
+    }
+
+    #currentPkmCardOverview {
+        padding-bottom: 2px;
+    }
+
+    #currentPkmTitle {
+        height: 32px;
+    }
+
+    #currentPkmId {
+        padding-left: 4px;
+        font-size: 14px;
+    }
+
+    #currentPkmName {
+        top: -20px;
+        font-size: 22px;
+    }
+
+    #closeCurrentPkm {
+        padding-right: 4px;
+        transform: scale(80%);
+    }
+
+    #currentPkmFrame {
+        height: 200px;
+    }
+
+    .arrow {
+        width: 20px;
+        height: 80px;
+        padding: 0 2px 0 2px;
+    }
+
+    #currentPkmImg {
+        transform: scale(64%);
+    }
+
+    .current_pkm_navbar {
+        height: 28px;
+        margin: 2px 12px 0 12px;
+    }
+
+    .current_pkm_navbar button {
+        font-size: 16px;
+    }
+
+    .current_pkm_navbar button:hover {
+        transform: scale(112%);
+        text-underline-offset: 6px;
+        text-decoration-thickness: 2px;
+    }
+
+    #currentPkmCardContent {
+        border-top-left-radius: 14px;
+        border-top-right-radius: 14px;
+    }
+
+    #currentPkmInfo {
+        max-height: 208px;
+    }
+
+    .info_category {
+        font-size: 14px;
+    }
+
+    .section_about {
+        padding: 20px 16px 0 16px;
+        gap: 16px;
+    }
+
+    #typesIcons img {
+        height: 16px;
+        width: 16px;
+        margin: 0 2px 0 2px;
+        padding: 12px;
+    }
+
+    .section_stats {
+        padding: 18px 14px 0 14px;
+        gap: 16px;
+    }
+
+    .progress_bar {
+        height: 12px;
+        max-width: 255px;
+        margin-left: 8px;
+        border-radius: 6px;
+    }
+
+    .progress_bar div {
+        border-radius: 6px;
+    }
+
+    .section_evoluion {
+        height: 208px;
+        gap: 8px;
+    }
+
+    .evolution_img {
+        height: 64px;
+        width: 64px;
+    }
+
+    .evolution_arrow {
+        height: 32px;
+        width: 12px;
+    }
+
+    .section_sound {
+        height: 208px;
+        font-size: 12px;
+    }
+
+    #currentPkmImgSound {
+        height: 104px;
+        width: 104px;
+        padding-bottom: 20px;
+    }
+}
+
+
+@media (max-height: 550px) {
+    #currentPkmCard {
+        top: 4%;
+    }
+}

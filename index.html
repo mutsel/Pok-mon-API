@@ -24,17 +24,17 @@
             <img src="./assets/icons_other/pokeball.png">
             POKÉMON API</h1>
         <div class="search_div display_flex_centered">
-            <input id="searchInput" type="search" name="searchInput" placeholder="Search for a Pokémon name . . ."
+            <input onkeyup="searchPkmName()" id="searchInput" type="search" name="searchInput" placeholder="Search for a Pokémon name . . ."
                 onkeypress="return event.charCode != 32">
             <label for="searchInput"></label>
-            <button onclick="searchPkmName()" id="searchSubmit" type="submit">
-                <img id="searchIcon" src="./assets/icons_other/search_icon.svg">
+            <button id="searchSubmit" type="submit">
+                <img onclick="cancelSearch()" id="searchIcon" src="./assets/icons_other/search_icon.svg">
             </button>
         </div>  
         </section>
     </header>
 
-    <main class="resp_padding display_flex_centered">
+    <main id="main" class="resp_padding display_flex_centered">
 
         <section id="pokeballBg"><img src="./assets/icons_other/schematic_pokeball.jpg"></section>
 
