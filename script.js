@@ -33,14 +33,14 @@ async function closeLoadingScreen() {
 async function fetchinitPkmsUrls() {
     let pokeApi = await fetch(BASE_URL);
     let pokeApiData = await pokeApi.json();
-    PkmsUrls = pokeApiData.results;
-    await loadinitPkmks();
+    pkmsUrls = pokeApiData.results;
+    await loadinitPkms();
 }
 
 
-async function loadinitPkmks() {
-    for (let indexPkms = 0; indexPkms < PkmsUrls.length; indexPkms++) {
-        let PKM_URL = PkmsUrls[indexPkms].url;
+async function loadinitPkms() {
+    for (let indexPkms = 0; indexPkms < pkmsUrls.length; indexPkms++) {
+        let PKM_URL = pkmsUrls[indexPkms].url;
         let pkmDataApi = await fetch(PKM_URL);
         let pkmsEntrie = await pkmDataApi.json();
         pkms.push(pkmsEntrie);
@@ -196,7 +196,7 @@ function loadEvoChainFirstEvo(pokeApiData) {
 
 
 function loadEvoChainSecondEvo(pokeApiData) {
-   let testFirstEvo = pokeApiData.chain.evolves_to.length;
+    let testFirstEvo = pokeApiData.chain.evolves_to.length;
     if (testFirstEvo == 1) {
         let testSecondEvo = pokeApiData.chain.evolves_to[0].evolves_to.length;
         if (testSecondEvo == 1) {
@@ -273,11 +273,11 @@ async function fetchNextPkms(NEXT_URL) {
     for (let indexPkms = 0; indexPkms < 20; indexPkms++) {
         pkmsUrls.push(nextPkmsUrls[indexPkms]);
     }
-    await loadNextPkmks();
+    await loadNextPkms();
 }
 
 
-async function loadNextPkmks() {
+async function loadNextPkms() {
     for (let indexPkms = offset; indexPkms < offset + 20; indexPkms++) {
         let PKM_URL = pkmsUrls[indexPkms].url;
         let pkmDataApi = await fetch(PKM_URL);
@@ -290,21 +290,22 @@ async function loadNextPkmks() {
 
 
 function clearPokedex() {
-    const contentRef = document.getElementById("pokedex");
+    let contentRef = document.getElementById("pokedex");
     contentRef.innerHTML = "";
-    PkmsUrls = [];
-    Pkms = [];
+    pkmsUrls = [];
+    pkms = [];
 }
 
 
 async function searchPkmName() {
-    clearPokedex();
-    document.getElementById("loadMorePkm").classList.add("d_none");
     let searchInput = document.getElementById('searchInput').value;
     if (searchInput.length >= 3) {
+        clearPokedex();
+        document.getElementById("loadMorePkm").classList.add("d_none");
         openLoadingScreen();
         await fetchTotalPkms(searchInput);
         await closeLoadingScreen();
+        document.getElementById('searchInput').value ="";
     }
 }
 
@@ -327,5 +328,5 @@ function findFilteredPkmNames(pokeApiResults, totalPkmNames, searchInput) {
         let indexSearchResultPkm = totalPkmNames.indexOf(searchResults[indexFilteredPkms]);
         pkmsUrls.push(pokeApiResults[indexSearchResultPkm]);
     }
-    loadinitPkmks();
+    loadinitPkms();
 }
