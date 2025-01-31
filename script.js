@@ -1,7 +1,6 @@
 const BASE_URL = "https://pokeapi.co/api/v2/pokemon/?offset=0&limit=20";
 const TOTAL_PKM_URL = "https://pokeapi.co/api/v2/pokemon?offset=0&limit=1304";
 let offset = 0;
-
 let pkmsUrls = [];
 let pkms = [];
 
@@ -81,6 +80,9 @@ async function loadPkmsTypes(indexPkms) {
 
 function alternativeImg(contentRef, indexPkms) {
     contentRef.src = pkms[indexPkms].sprites.other.home.front_default;
+    if (pkms[indexPkms].sprites.other.home.front_default == null) {
+        contentRef.src = "./assets/icons_other/img_missing.svg";
+    }
 }
 
 
@@ -333,7 +335,7 @@ async function loadNextPkms() {
 
 
 async function searchPkmName() {
-    let searchInput = document.getElementById('searchInput').value;
+    let searchInput = document.getElementById('searchInput').value.toLowerCase();
     if (searchInput.length >= 3) {
         openLoadingScreen();
         document.getElementById('searchInput').disabled = true;
